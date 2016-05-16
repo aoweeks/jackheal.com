@@ -226,6 +226,7 @@ h2 {
   cursor: pointer; }
 
 #youtube-screen-on {
+  position: absolute;
   background-color: none;
   width: 788.27px;
   height: 443.402px; }
