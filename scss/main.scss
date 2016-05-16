@@ -296,6 +296,12 @@ h2{
   transition-delay: 0.25s;
 }
 
+
+.svg-class{
+  filter: url(#dropshadow);
+}
+
+
 .is-visible{
   
   transition-delay: 0s;
@@ -380,7 +386,6 @@ h2{
 }
 
 #youtube-screen-on{
-  position: absolute;
   background-color: none;
   width: 788.27px;
   height: 443.402px;
