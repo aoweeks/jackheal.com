@@ -1,0 +1,383 @@
+//Variables
+$navbar-background: #2F4550;
+$navbar-text: white;
+
+$header-font: 'Passion One', cursive;
+
+
+//Mixins
+@mixin section-height-calc{
+  /* 99px: the navbar height, -2 pixels because there was an issue with the very end of the last section sometimes being visible*/
+  min-height: calc(100vh - 98px);
+  min-height: -o-calc(100vh - 98px); /* opera */
+  min-height: -webkit-calc(100vh - 98px); /* google, safari */
+  min-height: -moz-calc(100vh - 98px); /* firefox */
+}
+
+@mixin avatar-height-calc{
+  height: calc(100vh - 100px);
+  
+  height: -o-calc(100vh - 100px); /* opera */
+  height: -webkit-calc(100vh - 100px); /* google, safari */
+  height: -moz-calc(100vh - 100px); /* firefox */
+}
+
+@mixin navbar-shadow{
+  -moz-box-shadow:    0px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 5px 0px 0px  rgba(0, 0, 0, 0.25);
+  box-shadow:         0px 5px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+@mixin element-shadow{
+  -moz-box-shadow:    5px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 5px 5px 0px 0px  rgba(0, 0, 0, 0.25);
+  box-shadow:         5px 5px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%) !important;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+
+
+
+
+
+body {
+  padding-top: 100px;
+  
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  
+  a{
+    font-weight: bold;
+    transition-duration: 0.25s;
+  }
+  
+  a:hover{
+    text-decoration: none;
+  }
+  
+  a:focus{
+    text-decoration: none;
+  }
+}
+
+
+.no-padding{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.replacement-margin{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#footer{
+  min-height: 60px;
+  background-color: #390000;
+  color: white;
+  text-align: center;
+  line-height: 60px;
+  
+
+}
+
+.section{
+  padding: 40px 20px;
+  text-align: left;
+  width: inherit;
+  @include section-height-calc;
+  
+  .section-content{
+  }
+  
+  
+}
+
+
+blockquote{
+  font-size: 0.75em;  
+  footer{
+    color: white;
+    font-size: 1.25em;
+  }
+}
+
+
+
+.avatar-container{
+  position: fixed;
+  top: calc(50% + 50px);
+  transform: translateY(-50%);
+  text-align: center;
+  padding: none;
+  
+  .avatar-content{
+   
+      @include avatar-height-calc;
+      /* Can't inherit width from div so use media queries
+         to set the width at the same breakpoints as Bootstrap */
+      /* No XS 'cos it's hidden at that size anyway*/
+      /* Small */
+      @media only screen and (min-width : 768px) {
+          width: 45vw;
+      }
+
+      /* Medium */
+      @media only screen and (min-width : 992px) {
+          width: 35vw;
+      }
+
+      /* Large */
+      @media only screen and (min-width : 1200px) {
+          width: 30vw;
+      }
+      
+  }
+}
+
+
+.svg-class{
+  filter: url(#dropshadow);
+}
+
+
+p{
+  font-size: 3em;
+}
+
+
+h1{
+  font-family: $header-font;
+  font-size: 4.5em;
+}
+
+h2{
+  font-family: $header-font;
+  font-size: 3em;
+}
+
+.navbar-brand-jh{
+  font-family: $header-font;
+  font-size: 60px;
+  padding-left: 60px;
+  line-height: 70px;
+  
+  .title-cap{
+      font-size: 70px;
+      color: #3299BB;
+      
+      -webkit-text-stroke: 2px white;
+      padding-right: 1px;
+      
+      transition-duration: 0.5s;
+    }
+  
+}
+
+.navbar-jh{
+  background-color: $navbar-background;
+  height: 100px;
+  @include navbar-shadow;
+  
+  a{
+    color: $navbar-text;
+  }
+  
+  .navbar-nav{
+      font-size: 1.5em;
+      font-family: $header-font;
+      
+      li{
+        padding-right: 30px;
+        text-align: center;
+        
+      .nav-icon{
+          height: 45px;
+          width: 40px;
+          margin: none;
+          padding-bottom: 3px;
+       }
+      
+        
+      }
+      
+      a:hover{
+        background-color: $navbar-background;
+      }
+      
+      a:focus{
+        background-color: $navbar-background;
+      }
+  }
+}
+
+.contact-nav-link:hover #Flap{
+  fill: #AAA;
+  transition-duration: 1s;
+  transform: translate(0%, -100%) rotateX(180deg);
+}
+
+.dates-nav-link:hover #top-page{
+  transform: rotateX(180deg);
+  transition-duration: 1s;
+}
+
+
+#top{
+  background-color: #3299BB;
+}
+
+
+
+#about{
+  background-color: #A4036F;
+  color: white;
+  
+  blockquote{
+    font-size: 0.75em;  
+    footer{
+      color: white;
+      font-size: 1.25em;
+    }
+  }
+    
+}
+
+
+#dates, #past-shows{
+  background-color: #FFBB53;
+}
+
+#media, #video, #articles{
+  background-color:  #A02B33;
+  color: white;
+  
+  a{
+    color: #FF4F4F;
+  }
+  
+  a:hover{
+    color: white;
+  }
+  
+  a:hover{
+    color: white;
+  }
+  
+  
+  .article-link{
+    padding-top: 0.25em;
+  }
+  
+  
+}
+
+#contact{
+  background-color: #8AA24C;
+}
+
+
+#Flap{
+  fill: #EEE;
+}
+
+
+
+
+#comedy-club-background, #comedy-club-foreground,
+#lab-background, #contact-background{
+  opacity: 0;
+  transition-duration: 0.5s;
+  transition-delay: 0.25s;
+}
+
+.is-visible{
+  
+  transition-delay: 0s;
+  opacity: 1;
+}
+
+
+.is-clickable{
+  cursor: pointer;
+  //pointer-events: none;
+}
+
+//To stop the SVG being selected when clicking on elements
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    
+    -webkit-user-drag: none;
+    user-drag: none; 
+}
+
+
+.panel-jh{
+  border: none;
+  background-color: #FFBB53;
+  @include element-shadow;
+}
+
+.dates-table{
+  
+  background-color: #FF9D07;
+  
+  font-size: 1.33em;
+  
+  a{
+    color: black;
+  }
+  
+  thead{
+    background-color: $navbar-background !important;
+    color: white;
+    
+  }
+  
+  tbody>tr>td{
+    border:none;
+    
+  }
+  
+  
+  thead>tr>th{
+    border:none;
+    
+  }
+  
+  tbody>tr:nth-child(odd)>td {
+    background-color: #FFBB53;
+  }
+
+}
+
+
+.gallery-image{
+  width: 90%;
+  height: auto;
+  
+  border-style: solid;
+  border-width: 8px;
+  border-color: white;
+  
+  margin-bottom: 15%;
+  
+  @include element-shadow;
+}
+
+.gallery-image:hover{
+  border-color: $navbar-background;
+  cursor: pointer;
+}

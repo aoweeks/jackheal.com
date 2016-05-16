@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="monitor-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 841.889 1190.549" enable-background="new 0 0 841.889 1190.549"
+	 xml:space="preserve">
+<path id="television-body" fill="#7E7E82" d="M820.671,327.2H21.213c-9.302,0-16.867,7.553-16.867,16.878v472.514
+	c0,9.309,7.565,16.867,16.867,16.867h288.624v74.691h-107.94c-8.482,0-15.363,5.002-15.363,11.184v29.131h468.829v-29.131
+	c0-6.182-6.887-11.184-15.369-11.184H532.059V833.46h288.612c9.313,0,16.873-7.559,16.873-16.867V344.079
+	C837.544,334.754,829.985,327.2,820.671,327.2z"/>
+<rect id="screen" x="52.219" y="372.914" fill="#FFFFFF" width="737.458" height="414.822"/>
+<g id="pause" display="none">
+	<rect id="left-pause-bar" x="267.414" y="437.441" display="inline" fill="#001400" width="92.185" height="255.77"/>
+	<rect id="right-pause-bar" x="430.999" y="437.441" display="inline" fill="#001400" width="92.185" height="255.77"/>
+</g>
+<polygon id="play" fill="#001400" points="544.496,565.325 288.726,693.21 288.726,437.441 544.496,565.325 "/>
+</svg>

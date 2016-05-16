@@ -1,0 +1,228 @@
+body {
+  padding-top: 100px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400; }
+  body a {
+    font-weight: bold;
+    transition-duration: 0.25s; }
+  body a:hover {
+    text-decoration: none; }
+  body a:focus {
+    text-decoration: none; }
+
+.no-padding {
+  padding-left: 0;
+  padding-right: 0; }
+
+.replacement-margin {
+  margin-left: 20px;
+  margin-right: 20px; }
+
+#footer {
+  min-height: 60px;
+  background-color: #390000;
+  color: white;
+  text-align: center;
+  line-height: 60px; }
+
+.section {
+  padding: 40px 20px;
+  text-align: left;
+  width: inherit;
+  /* 99px: the navbar height, -2 pixels because there was an issue with the very end of the last section sometimes being visible*/
+  min-height: calc(100vh - 98px);
+  min-height: -o-calc(100vh - 98px);
+  /* opera */
+  min-height: -webkit-calc(100vh - 98px);
+  /* google, safari */
+  min-height: -moz-calc(100vh - 98px);
+  /* firefox */ }
+
+blockquote {
+  font-size: 0.75em; }
+  blockquote footer {
+    color: white;
+    font-size: 1.25em; }
+
+.avatar-container {
+  position: fixed;
+  top: calc(50% + 50px);
+  transform: translateY(-50%);
+  text-align: center;
+  padding: none; }
+  .avatar-container .avatar-content {
+    height: calc(100vh - 100px);
+    height: -o-calc(100vh - 100px);
+    /* opera */
+    height: -webkit-calc(100vh - 100px);
+    /* google, safari */
+    height: -moz-calc(100vh - 100px);
+    /* firefox */
+    /* Can't inherit width from div so use media queries
+       to set the width at the same breakpoints as Bootstrap */
+    /* No XS 'cos it's hidden at that size anyway*/
+    /* Small */
+    /* Medium */
+    /* Large */ }
+    @media only screen and (min-width: 768px) {
+      .avatar-container .avatar-content {
+        width: 45vw; } }
+    @media only screen and (min-width: 992px) {
+      .avatar-container .avatar-content {
+        width: 35vw; } }
+    @media only screen and (min-width: 1200px) {
+      .avatar-container .avatar-content {
+        width: 30vw; } }
+
+.svg-class {
+  filter: url(#dropshadow); }
+
+p {
+  font-size: 3em; }
+
+h1 {
+  font-family: "Passion One", cursive;
+  font-size: 4.5em; }
+
+h2 {
+  font-family: "Passion One", cursive;
+  font-size: 3em; }
+
+.navbar-brand-jh {
+  font-family: "Passion One", cursive;
+  font-size: 60px;
+  padding-left: 60px;
+  line-height: 70px; }
+  .navbar-brand-jh .title-cap {
+    font-size: 70px;
+    color: #3299BB;
+    -webkit-text-stroke: 2px white;
+    padding-right: 1px;
+    transition-duration: 0.5s; }
+
+.navbar-jh {
+  background-color: #2F4550;
+  height: 100px;
+  -moz-box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 5px 0px 0px rgba(0, 0, 0, 0.25); }
+  .navbar-jh a {
+    color: white; }
+  .navbar-jh .navbar-nav {
+    font-size: 1.5em;
+    font-family: "Passion One", cursive; }
+    .navbar-jh .navbar-nav li {
+      padding-right: 30px;
+      text-align: center; }
+      .navbar-jh .navbar-nav li .nav-icon {
+        height: 45px;
+        width: 40px;
+        margin: none;
+        padding-bottom: 3px; }
+    .navbar-jh .navbar-nav a:hover {
+      background-color: #2F4550; }
+    .navbar-jh .navbar-nav a:focus {
+      background-color: #2F4550; }
+
+.contact-nav-link:hover #Flap {
+  fill: #AAA;
+  transition-duration: 1s;
+  transform: translate(0%, -100%) rotateX(180deg); }
+
+.dates-nav-link:hover #top-page {
+  transform: rotateX(180deg);
+  transition-duration: 1s; }
+
+#top {
+  background-color: #3299BB; }
+
+#about {
+  background-color: #A4036F;
+  color: white; }
+  #about blockquote {
+    font-size: 0.75em; }
+    #about blockquote footer {
+      color: white;
+      font-size: 1.25em; }
+
+#dates, #past-shows {
+  background-color: #FFBB53; }
+
+#media, #video, #articles {
+  background-color: #A02B33;
+  color: white; }
+  #media a, #video a, #articles a {
+    color: #FF4F4F; }
+  #media a:hover, #video a:hover, #articles a:hover {
+    color: white; }
+  #media a:hover, #video a:hover, #articles a:hover {
+    color: white; }
+  #media .article-link, #video .article-link, #articles .article-link {
+    padding-top: 0.25em; }
+
+#contact {
+  background-color: #8AA24C; }
+
+#Flap {
+  fill: #EEE; }
+
+#comedy-club-background, #comedy-club-foreground,
+#lab-background, #contact-background {
+  opacity: 0;
+  transition-duration: 0.5s;
+  transition-delay: 0.25s; }
+
+.is-visible {
+  transition-delay: 0s;
+  opacity: 1; }
+
+.is-clickable {
+  cursor: pointer; }
+
+.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none; }
+
+.panel-jh {
+  border: none;
+  background-color: #FFBB53;
+  -moz-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25); }
+
+.dates-table {
+  background-color: #FF9D07;
+  font-size: 1.33em; }
+  .dates-table a {
+    color: black; }
+  .dates-table thead {
+    background-color: #2F4550 !important;
+    color: white; }
+  .dates-table tbody > tr > td {
+    border: none; }
+  .dates-table thead > tr > th {
+    border: none; }
+  .dates-table tbody > tr:nth-child(odd) > td {
+    background-color: #FFBB53; }
+
+.gallery-image {
+  width: 90%;
+  height: auto;
+  border-style: solid;
+  border-width: 8px;
+  border-color: white;
+  margin-bottom: 15%;
+  -moz-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25); }
+
+.gallery-image:hover {
+  border-color: #2F4550;
+  cursor: pointer; }
+
+/*# sourceMappingURL=main.css.map */
