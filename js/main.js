@@ -20,14 +20,43 @@ $(window).scroll(function (event) {
 
 $(document).ready(function (event){
     updateBasedOnScrollPosition();
+    
+    //Kludge to get around embedding iframe in SVG problems with IE
+    //IE and Firefox absolute positioning not behaving the way it does in Chrome. Investigate!
+    var screenLeft = $('#youtube-screen-off').position().left;
+    var screenTop = $('#youtube-screen-off').position().top;
+    
+    console.log(screenLeft + " " + screenTop);
+    
+    $('#youtube-screen-on').css('left', screenLeft)
+    $('#youtube-screen-on').css('top', screenTop)
+    
+});
+
+/*VIDEO PLAYER FUNCTIONS
+########################*/
+
+var currentVideo = "chortle-final";
+$('#chortle-final').on('click', function(){
+    
+    if(currentVideo != "chortle-final"){
+        $('#youtube-screen-on').html(`<iframe xmlns="http://www.w3.org/1999/xhtml"
+                                                class="youtube-content"
+                                                src="https://www.youtube.com/embed/S26XIyT5BCI"
+                                                frameborder="0"></iframe>`);
+       currentVideo = "chortle-final";
+    }
+    
 });
 
 $('#murderthon-trailer').on('click', function(){
-    console.log("MURDERTHON!!!");
-   $('#youtube-screen').html(`<iframe xmlns="http://www.w3.org/1999/xhtml"
-                                        width="788.27" height="443.402"
-                                        src="https://www.youtube.com/embed/Zk-hz7ki4H8"
-                                        frameborder="0"></iframe>`);
+    if(currentVideo != "murderthon-trailer"){
+        $('#youtube-screen-on').html(`<iframe xmlns="http://www.w3.org/1999/xhtml"
+                                                class="youtube-content"
+                                                src="https://www.youtube.com/embed/Zk-hz7ki4H8"
+                                                frameborder="0"></iframe>`);
+        currentVideo = "murderthon-trailer";
+    }
 });
 
 

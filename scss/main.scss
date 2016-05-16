@@ -144,9 +144,6 @@ blockquote{
 }
 
 
-.svg-class{
-  filter: url(#dropshadow);
-}
 
 
 p{
@@ -380,4 +377,16 @@ h2{
 .gallery-image:hover{
   border-color: $navbar-background;
   cursor: pointer;
+}
+
+#youtube-screen-on{
+  position: absolute;
+  background-color: none;
+  width: 788.27px;
+  height: 443.402px;
+  
+  .youtube-content{
+    height: inherit;
+    width: inherit;
+  }
 }

@@ -74,9 +74,6 @@ blockquote {
       .avatar-container .avatar-content {
         width: 30vw; } }
 
-.svg-class {
-  filter: url(#dropshadow); }
-
 p {
   font-size: 3em; }
 
@@ -224,5 +221,14 @@ h2 {
 .gallery-image:hover {
   border-color: #2F4550;
   cursor: pointer; }
+
+#youtube-screen-on {
+  position: absolute;
+  background-color: none;
+  width: 788.27px;
+  height: 443.402px; }
+  #youtube-screen-on .youtube-content {
+    height: inherit;
+    width: inherit; }
 
 /*# sourceMappingURL=main.css.map */
