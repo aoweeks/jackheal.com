@@ -11,15 +11,25 @@ $('a[href^="#"]').on('click', function(event) {
 
 });
 
-$(window).scroll(function (event) { 
+$(window).scroll( function (event) { 
     
     updateBasedOnScrollPosition();
     
 });
 
+$(window).resize( function (event){
+    placeYouTubeScreen();
+});
 
-$(document).ready(function (event){
+
+$(document).ready( function (event){
+    
     updateBasedOnScrollPosition();
+    placeYouTubeScreen();    
+    
+});
+
+function placeYouTubeScreen(){
     
     //Kludge to get around embedding iframe in SVG problems with IE
     //IE and Firefox absolute positioning not behaving the way it does in Chrome. Investigate!
@@ -28,10 +38,10 @@ $(document).ready(function (event){
     
     console.log(screenLeft + " " + screenTop);
     
-    $('#youtube-screen-on').css('left', screenLeft)
-    $('#youtube-screen-on').css('top', screenTop)
+    $('#youtube-screen-on').css('left', screenLeft);
+    $('#youtube-screen-on').css('top', screenTop);
     
-});
+}
 
 /*VIDEO PLAYER STUFF
 ########################*/
