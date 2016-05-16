@@ -33,31 +33,44 @@ $(document).ready(function (event){
     
 });
 
-/*VIDEO PLAYER FUNCTIONS
+/*VIDEO PLAYER STUFF
 ########################*/
 
-var currentVideo = "chortle-final";
-$('#chortle-final').on('click', function(){
-    
-    if(currentVideo != "chortle-final"){
-        $('#youtube-screen-on').html(`<iframe xmlns="http://www.w3.org/1999/xhtml"
-                                                class="youtube-content"
-                                                src="https://www.youtube.com/embed/S26XIyT5BCI"
-                                                frameborder="0"></iframe>`);
-       currentVideo = "chortle-final";
+var currentVideo = "#chortle-final";
+
+
+class Video {
+    constructor(id, urlMiddle) {
+        this.id = id;
+        var urlStart = '<iframe xmlns="http://www.w3.org/1999/xhtml" class="youtube-content" src="https://www.youtube.com/embed/'
+        var urlEnd = '" frameborder="0"></iframe>';
+        this.url = urlStart + urlMiddle + urlEnd;
     }
-    
+}
+
+var chortleFinalVideo = new Video('#chortle-final', 'S26XIyT5BCI');
+var murderthonTrailerlVideo = new Video('#murderthon-trailer', 'Zk-hz7ki4H8');
+
+
+$('#chortle-final').on('click', function(){
+
+    loadVideo(chortleFinalVideo);
 });
 
 $('#murderthon-trailer').on('click', function(){
-    if(currentVideo != "murderthon-trailer"){
-        $('#youtube-screen-on').html(`<iframe xmlns="http://www.w3.org/1999/xhtml"
-                                                class="youtube-content"
-                                                src="https://www.youtube.com/embed/Zk-hz7ki4H8"
-                                                frameborder="0"></iframe>`);
-        currentVideo = "murderthon-trailer";
-    }
+    loadVideo(murderthonTrailerlVideo);
 });
+
+function loadVideo(videoToLoad){
+    if($('#youtube-screen-on').html() != videoToLoad.url){
+        $('#youtube-screen-on').html(videoToLoad.url);
+        currentVideo = videoToLoad.id;
+    }
+}
+
+loadVideo(chortleFinalVideo);
+/*END OF VIDEO PLAYER STUFF
+##########################*/
 
 
 sectionTops = [];
