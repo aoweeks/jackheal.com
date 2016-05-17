@@ -136,9 +136,14 @@ function onYouTubeIframeAPIReady() {
             playlist: 'Zk-hz7ki4H8'
         },
         events: {
-            onReady: placeYouTubeScreen
+            onReady: initializeYouTube
         }
     });
+}
+
+function initializeYouTube(){
+    placeYouTubeScreen();
+    player.setLoop(true);
 }
 
 
@@ -158,10 +163,10 @@ Snap.load('img/remote.svg', function (response) {
     
     
     var channelUpButton = response.select('#remote-channel-up-button');
-    channelUpButton.click( skipForwardButtonClickHandler );
+    channelUpButton.click( channelUpButtonClickHandler );
     
     var channelDownButton = response.select('#remote-channel-down-button');
-    channelDownButton.click( skipBackButtonClickHandler );
+    channelDownButton.click( channelDownButtonClickHandler );
     
     
     var volumeUpButton = response.select('#remote-volume-up-button');
@@ -182,6 +187,12 @@ Snap.load('img/remote.svg', function (response) {
     
     var stopButton = response.select('#remote-stop-button');
     stopButton.click( stopButtonClickHandler );
+    
+    var fastForwardButton = response.select('#remote-fast-forward-button');
+    fastForwardButton.click( fastForwardButtonClickHandler );
+    
+    var rewindButton = response.select('#remote-rewind-button');
+    rewindButton.click( rewindButtonClickHandler );
     
     
     var skipForwardButton = response.select('#remote-skip-forward-button');
@@ -233,6 +244,14 @@ function volumeDownButtonClickHandler(){
     }
 }
 
+function channelUpButtonClickHandler(){
+    if(screenOn) player.nextVideo();
+}
+
+function channelDownButtonClickHandler(){
+    if(screenOn) player.previousVideo();
+}
+
 
 function muteButtonClickHandler(){
     
@@ -251,8 +270,11 @@ function button2ClickHandler(){
     if(screenOn) player.playVideoAt(1);
 }
 
+
+
 function playButtonClickHandler(){
     if(screenOn){
+        player.setPlaybackRate(1);
         player.playVideo();
     }
 }
@@ -269,12 +291,26 @@ function stopButtonClickHandler(){
     }
 }
 
+function fastForwardButtonClickHandler(){
+    if(screenOn){
+        var speed = player.getPlaybackRate() * 2;
+        player.setPlaybackRate(speed);
+    }
+}
+
+function rewindButtonClickHandler(){
+    if(screenOn){
+        var speed = player.getPlaybackRate() / 2;
+        player.setPlaybackRate(speed);
+    }
+}
+
 function skipForwardButtonClickHandler(){
-    if(screenOn) player.nextVideo();
+    if(screenOn) player.seekTo(player.getCurrentTime() + 30, true);
 }
 
 function skipBackButtonClickHandler(){
-    if(screenOn) player.previousVideo();
+    if(screenOn) player.seekTo(player.getCurrentTime() - 30, true);
 }
 
 
