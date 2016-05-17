@@ -122,7 +122,10 @@ Snap.load('img/poster-stand.svg', function (response) {
 
 var thePoster = posterStand.image("img/murderthon.jpg", 181.386, -118.162, 542.798, 767.714);
 
-
+var tvRemote = new Snap('#television-remote');
+Snap.load('img/remote.svg', function (response) {
+    tvRemote.append(response);
+});
 
 
 
