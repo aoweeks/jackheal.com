@@ -32,7 +32,6 @@ $(document).ready( function (event){
 function placeYouTubeScreen(){
     
     //Kludge to get around embedding iframe in SVG problems with IE
-    //IE and Firefox absolute positioning not behaving the way it does in Chrome. Investigate!
     var screenLeft = $('#youtube-screen-off').position().left;
     var screenTop = $('#youtube-screen-off').position().top;
     
