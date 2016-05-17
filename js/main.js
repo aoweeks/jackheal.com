@@ -1,33 +1,116 @@
+
+var sectionTops = [];
+
+
+var halfWindowHeight;
+//Tops for each of the various major sections
+var aboutPoint;
+var datesPoint;
+var mediaPoint;
+var contactPoint;
+
+
 $('a[href^="#"]').on('click', function(event) {
 
     var target = $( $(this).attr('href') );
 
     if( target.length ) {
         event.preventDefault();
-        $('html, body').animate({
-            scrollTop: target.offset().top - 99//101 rather than 100 because of issue where 1 pixel was still sometimes visible
-        },500);
+        scrollToSection(target.offset().top - 99);
     }
 
 });
 
 $(window).scroll( function (event) { 
-    
     updateBasedOnScrollPosition();
-    
 });
 
 $(window).resize( function (event){
+    
+    getSectionPointInfo();
     placeYouTubeScreen();
+    getSectionTops();
 });
 
 
 $(document).ready( function (event){
-    
+    getSectionPointInfo();
     updateBasedOnScrollPosition();
     placeYouTubeScreen();    
-    
+    getSectionTops();
 });
+
+/* SECTION SCROLLING STUFF
+##########################*/
+
+$(document).keydown( function (event){
+   switch(event.which){
+        
+        case 33: //page up
+            scrollUpASection();
+        break;
+   
+        case 34: //page down
+            scrollDownASection();
+        break;
+       
+       
+        case 38: //up
+            scrollUpASection();
+        break;
+   
+        case 40: //down
+            scrollDownASection();
+        break;
+        
+        default: return;
+   }
+});
+
+
+function scrollUpASection(){
+    setTimeout(function(){
+        checkIfMovedToNewSection(false)
+    }, 300);
+}
+
+function scrollDownASection(){    
+    setTimeout(function(){
+        checkIfMovedToNewSection(true)
+    }, 300);
+}
+
+
+
+
+function scrollToSection(target){
+         $('html, body').animate({
+            scrollTop: target//101 rather than 100 because of issue where 1 pixel was still sometimes visible
+        },500);
+}
+
+function getSectionTops(){
+    
+    //Clear the array
+    sectionTops.length = 0;
+    
+    
+    //Find the top of each section of the page and add to array
+    $(".section").each( function() {
+       sectionTops.push($(this).offset().top);  
+    });
+    
+    //Also add the top of the footer to the end of the array
+    sectionTops.push($("#footer").offset().top);
+    
+}
+
+
+/* END SECTION SCROLLING STUFF
+#############################*/
+
+
+
 
 function placeYouTubeScreen(){
     
@@ -88,11 +171,6 @@ END OF VIDEO PLAYER STUFF
 ##########################*/
 
 
-sectionTops = [];
-function sectionTopCalculator(){
-    
-}
-
 
 
 var avatar = new Snap('.avatar-content');
@@ -108,7 +186,6 @@ Snap.load('img/jack.svg', function (response) {
 
 var monitorOn = true;
 function monitorClickHandler(){
-    console.log("Monitor clicked!");
     monitorOn ? $('#monitor-screen-on').css("opacity", 1) : $('#monitor-screen-on').css("opacity", 0);
     monitorOn = !monitorOn;
 };
@@ -342,22 +419,25 @@ Snap.load('img/envelope.svg', function (response) {
    envelopeIcon.append(response); 
 });
 
+
+
+function getSectionPointInfo(){
+    halfWindowHeight = $(window).height() / 2;
+    
+    aboutPoint = $("#about").position().top - halfWindowHeight;
+    datesPoint = $("#dates").position().top - halfWindowHeight;
+    mediaPoint = $("#media").position().top - halfWindowHeight;
+    contactPoint = $("#contact").position().top - halfWindowHeight;
+    
+   
+}
+
 function updateBasedOnScrollPosition(){
     
   
     
     var windowTop = $(document).scrollTop();
-    var halfWindowHeight = $(window).height() / 2;
-    
-    var aboutPoint = $("#about").position().top - halfWindowHeight;
-    var datesPoint = $("#dates").position().top - halfWindowHeight;
-    var mediaPoint = $("#media").position().top - halfWindowHeight;
-    var contactPoint = $("#contact").position().top - halfWindowHeight;
-    
-    
-    
-   console.log(windowTop);
-    
+
     /* Could do with refactoring to DRY up*/
     if(windowTop < aboutPoint){
         var topColour = $('#top').css("background-color");
@@ -399,3 +479,50 @@ function updateBasedOnScrollPosition(){
     }
     
 }
+
+
+function checkIfMovedToNewSection(goingDown){
+    
+    var windowTop = $(document).scrollTop() + 99;
+    var windowBottom = $(document).scrollTop() + $(window).height();
+    
+    
+    var topSection;
+    var bottomSection;
+    
+    for(i = 0; i < sectionTops.length; i++){
+        if(windowTop >= sectionTops[i] && windowTop < sectionTops[i + 1]) topSection = sectionTops[i];
+        if(windowBottom >= sectionTops[i] && windowTop < sectionTops[i + 1]) bottomSection = sectionTops[i];
+    }
+    
+    console.log("WINDOW TOP: " + windowTop + " + WINDOW BOTTOM: " + windowBottom);
+    console.log("TOP: " + topSection + " + BOTTOM : " + bottomSection);
+    console.log(sectionTops);
+    //If the window has moved into a new section
+    if(topSection != bottomSection){
+        if(goingDown){
+            scrollToSection(bottomSection - 99);
+        }
+        else{
+            
+            scrollToSection(topSection - 99);
+        }
+    }
+}
+
+
+
+
+
+
+/* DEBUGGING FUNCTIONS
+########################*/
+
+$('.section').on('click', function (event) {
+    console.log($(this).offset().top);
+});
+
+
+$('#footer').on('click', function (event) {
+    console.log($(this).offset().top);
+});
