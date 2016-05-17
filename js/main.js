@@ -58,7 +58,7 @@ class Video {
     constructor(id, urlMiddle) {
         this.id = id;
         var urlStart = '<iframe xmlns="http://www.w3.org/1999/xhtml" class="youtube-content" src="https://www.youtube.com/embed/'
-        var urlEnd = '" frameborder="0"></iframe>';
+        var urlEnd = '" frameborder="0" /allowfullscreen></iframe>';
         this.url = urlStart + urlMiddle + urlEnd;
     }
 }
