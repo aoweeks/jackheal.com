@@ -47,38 +47,43 @@ $(document).keydown( function (event){
    switch(event.which){
         
         case 33: //page up
-            scrollUpASection();
+            scrollCheckSection(false);
         break;
    
         case 34: //page down
-            scrollDownASection();
+            scrollCheckSection(true);
         break;
        
        
         case 38: //up
-            scrollUpASection();
+            scrollCheckSection();
         break;
    
         case 40: //down
-            scrollDownASection();
+            scrollCheckSection(true);
         break;
         
         default: return;
    }
 });
 
+$(document).mousewheel( function(event, delta) {
+   if(delta > 0 ){
+        scrollCheckSection(false);
+   }
+   else{
+       scrollCheckSection(true);
+   }
+});
 
-function scrollUpASection(){
-    setTimeout(function(){
-        checkIfMovedToNewSection(false)
-    }, 300);
+var scrollTimeOut;
+function scrollCheckSection(goingDown){
+    clearTimeout(scrollTimeOut);
+    scrollTimeOut = setTimeout(function(){
+        checkIfMovedToNewSection(goingDown)
+    }, 200);
 }
 
-function scrollDownASection(){    
-    setTimeout(function(){
-        checkIfMovedToNewSection(true)
-    }, 300);
-}
 
 
 
