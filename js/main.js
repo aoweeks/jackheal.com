@@ -130,8 +130,6 @@ var player;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-screen-on', {
-        width: 600,
-        height: 400,
         videoId: 'S26XIyT5BCI',
         playerVars: {
             color: 'white',
@@ -147,7 +145,30 @@ function onYouTubeIframeAPIReady() {
 var tvRemote = new Snap('#television-remote');
 Snap.load('img/remote.svg', function (response) {
     
+    var powerButton = response.select('#remote-power-button');
+    powerButton.click( powerButtonClickHandler );
     
+    /*Channel Number Buttons*/
+    /* Would like to DRY this up, but can't find a way to pass parameters when setting the click handler*/
+    var button1 = response.select('#remote-button-1');
+    button1.click( button1ClickHandler );
+    
+    var button2 = response.select('#remote-button-2');
+    button2.click( button2ClickHandler );
+    
+    
+    var channelUpButton = response.select('#remote-channel-up-button');
+    channelUpButton.click( skipForwardButtonClickHandler );
+    
+    var channelDownButton = response.select('#remote-channel-down-button');
+    channelDownButton.click( skipBackButtonClickHandler );
+    
+    
+    var volumeUpButton = response.select('#remote-volume-up-button');
+    volumeUpButton.click( volumeUpButtonClickHandler );
+    
+    var volumeDownButton = response.select('#remote-volume-down-button');
+    volumeDownButton.click( volumeDownButtonClickHandler );
     
     var muteButton = response.select('#remote-mute-button');
     muteButton.click( muteButtonClickHandler );
@@ -161,29 +182,99 @@ Snap.load('img/remote.svg', function (response) {
     
     var stopButton = response.select('#remote-stop-button');
     stopButton.click( stopButtonClickHandler );
+    
+    
+    var skipForwardButton = response.select('#remote-skip-forward-button');
+    skipForwardButton.click( skipForwardButtonClickHandler );
+    
+    var skipBackButton = response.select('#remote-skip-back-button');
+    skipBackButton.click( skipBackButtonClickHandler );
+        
         
     tvRemote.append(response);
 });
 
-
-function muteButtonClickHandler(){
-    console.log("clicked!");
-    player.isMuted() ? player.unMute() : player.mute()
+var screenOn = true;
+function powerButtonClickHandler(){
+    
+    if(screenOn){
+        $('#youtube-screen-on').css('opacity', 0);
+        player.stopVideo();
+        $('#youtube-television-led').css('fill', '#A02B33');
+    }
+    else{
+        $('#youtube-screen-on').css('opacity', 1);
+        $('#youtube-television-led').css('fill', '#8AA24C');
+    }
+    
+    screenOn = !screenOn;
     
 }
 
 
+function volumeUpButtonClickHandler(){
+    
+    if(screenOn){
+        //Get volume in case the volume has been adjusted by the user manually
+        var playerVolume = player.getVolume();
+        playerVolume += 5;
+        //Turn the volume up, only if the player isn't muted, otherwise unmute
+        player.isMuted() ? player.unMute() : player.setVolume(playerVolume)
+    }
+}
+
+function volumeDownButtonClickHandler(){
+    
+    if(screenOn){
+        //Get volume in case the volume has been adjusted by the user manually
+        var playerVolume = player.getVolume();
+        playerVolume -= 5;
+        player.setVolume(playerVolume)
+    }
+}
+
+
+function muteButtonClickHandler(){
+    
+    if(screenOn){
+        player.isMuted() ? player.unMute() : player.mute()
+    }
+    
+}
+
+
+function button1ClickHandler(){
+    if(screenOn) player.playVideoAt(0);
+}
+
+function button2ClickHandler(){
+    if(screenOn) player.playVideoAt(1);
+}
 
 function playButtonClickHandler(){
-    player.playVideo();
+    if(screenOn){
+        player.playVideo();
+    }
 }
 
 function pauseButtonClickHandler(){
-    player.pauseVideo();
+    if(screenOn){
+        player.pauseVideo();
+    }
 }
 
 function stopButtonClickHandler(){
-    player.stopVideo();
+    if(screenOn){
+        player.stopVideo();
+    }
+}
+
+function skipForwardButtonClickHandler(){
+    if(screenOn) player.nextVideo();
+}
+
+function skipBackButtonClickHandler(){
+    if(screenOn) player.previousVideo();
 }
 
 
