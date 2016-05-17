@@ -49,7 +49,7 @@ function placeYouTubeScreen(){
 }
 
 /*VIDEO PLAYER STUFF
-########################*/
+########################
 
 var currentVideo = "#chortle-final";
 
@@ -84,7 +84,7 @@ function loadVideo(videoToLoad){
 }
 
 loadVideo(chortleFinalVideo);
-/*END OF VIDEO PLAYER STUFF
+END OF VIDEO PLAYER STUFF
 ##########################*/
 
 
@@ -122,12 +122,75 @@ Snap.load('img/poster-stand.svg', function (response) {
 
 var thePoster = posterStand.image("img/murderthon.jpg", 181.386, -118.162, 542.798, 767.714);
 
+
+/* VIDEO PLAYER STUFF
+########################*/
+
+var player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-screen-on', {
+        width: 600,
+        height: 400,
+        videoId: 'S26XIyT5BCI',
+        playerVars: {
+            color: 'white',
+            playlist: 'Zk-hz7ki4H8'
+        },
+        events: {
+            onReady: placeYouTubeScreen
+        }
+    });
+}
+
+
 var tvRemote = new Snap('#television-remote');
 Snap.load('img/remote.svg', function (response) {
+    
+    
+    
+    var muteButton = response.select('#remote-mute-button');
+    muteButton.click( muteButtonClickHandler );
+    
+        
+    var playButton = response.select('#remote-play-button');
+    playButton.click( playButtonClickHandler );
+    
+    var pauseButton = response.select('#remote-pause-button');
+    pauseButton.click( pauseButtonClickHandler );
+    
+    var stopButton = response.select('#remote-stop-button');
+    stopButton.click( stopButtonClickHandler );
+        
     tvRemote.append(response);
 });
 
 
+function muteButtonClickHandler(){
+    console.log("clicked!");
+    player.isMuted() ? player.unMute() : player.mute()
+    
+}
+
+
+
+function playButtonClickHandler(){
+    player.playVideo();
+}
+
+function pauseButtonClickHandler(){
+    player.pauseVideo();
+}
+
+function stopButtonClickHandler(){
+    player.stopVideo();
+}
+
+
+
+
+/*END VIDEO PLAYER STUFF
+#########################*/
 
 var headIcon = new Snap('.jack-head-icon');
 Snap.load('img/jack-head.svg', function (response) {
