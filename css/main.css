@@ -170,7 +170,7 @@ h2 {
   transition-delay: 0.25s; }
 
 .svg-class {
-  filter: url(#dropshadow); }
+  -webkit-filter: url(#dropshadow); }
 
 .is-visible {
   transition-delay: 0s;
