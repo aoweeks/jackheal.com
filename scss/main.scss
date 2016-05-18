@@ -81,10 +81,13 @@ body {
 
 #footer{
   min-height: 60px;
+  line-height: 60px;
+  
   background-color: #FFFF79;
+  
   color: #2F4550;
   text-align: center;
-  line-height: 60px;
+  font-weight: bold;
   
 
 }
@@ -399,4 +402,8 @@ h2{
 #television-remote{
   width: 130px;
   height: 600px;
+}
+
+#television-youtube{
+  font-weight: lighter;
 }
