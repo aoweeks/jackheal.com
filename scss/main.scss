@@ -407,3 +407,8 @@ h2{
 #television-youtube{
   font-weight: lighter;
 }
+
+.inactive{
+  opacity: 0;
+  pointer-events: none;
+}

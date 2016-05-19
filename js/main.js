@@ -282,7 +282,8 @@ Snap.load('img/remote.svg', function (response) {
     
     var skipBackButton = response.select('#remote-skip-back-button');
     skipBackButton.click( skipBackButtonClickHandler );
-        
+    
+    
         
     tvRemote.append(response);
 });
@@ -370,6 +371,7 @@ function pauseButtonClickHandler(){
 function stopButtonClickHandler(){
     if(screenOn){
         player.stopVideo();
+        deactivateYouTube();
     }
 }
 
@@ -396,8 +398,31 @@ function skipBackButtonClickHandler(){
 }
 
 
+/*Smart TV Menu stuff
+-------------------*/
+var youTubeActive = false;
+
+$('#video-row-1-col-1').on('click', function(event) {
+    activateYouTube();
+    player.playVideoAt(0);
+ });
+ 
+$('#video-row-1-col-2').on('click', function(event) {
+    activateYouTube();
+    player.playVideoAt(1);
+ });
 
 
+
+function activateYouTube(){
+    $('#youtube-screen-on').removeClass('inactive');
+    youTubeActive = true;
+}
+
+function deactivateYouTube(){
+    $('#youtube-screen-on').addClass('inactive');
+    youTubeActive = false;
+}
 /*END VIDEO PLAYER STUFF
 #########################*/
 
