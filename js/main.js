@@ -136,45 +136,6 @@ function placeYouTubeScreen(){
     
 }
 
-/*VIDEO PLAYER STUFF
-########################
-
-var currentVideo = "#chortle-final";
-
-
-class Video {
-    constructor(id, urlMiddle) {
-        this.id = id;
-        var urlStart = '<iframe xmlns="http://www.w3.org/1999/xhtml" class="youtube-content" src="https://www.youtube.com/embed/'
-        var urlEnd = '" frameborder="0" /allowfullscreen></iframe>';
-        this.url = urlStart + urlMiddle + urlEnd;
-    }
-}
-
-var chortleFinalVideo = new Video('#chortle-final', 'S26XIyT5BCI');
-var murderthonTrailerlVideo = new Video('#murderthon-trailer', 'Zk-hz7ki4H8');
-
-
-$('#chortle-final').on('click', function(){
-
-    loadVideo(chortleFinalVideo);
-});
-
-$('#murderthon-trailer').on('click', function(){
-    loadVideo(murderthonTrailerlVideo);
-});
-
-function loadVideo(videoToLoad){
-    if($('#youtube-screen-on').html() != videoToLoad.url){
-        $('#youtube-screen-on').html(videoToLoad.url);
-        currentVideo = videoToLoad.id;
-    }
-}
-
-loadVideo(chortleFinalVideo);
-END OF VIDEO PLAYER STUFF
-##########################*/
-
 
 
 
@@ -208,6 +169,9 @@ var thePoster = posterStand.image("img/murderthon.jpg", 181.386, -118.162, 542.7
 /* VIDEO PLAYER STUFF
 ########################*/
 
+/*YouTube stuff
+---------------*/
+
 var player;
 
 function onYouTubeIframeAPIReady() {
@@ -228,6 +192,23 @@ function initializeYouTube(){
     player.setLoop(true);
 }
 
+
+function activateYouTube(){
+    $('#youtube-screen-on').removeClass('inactive');
+    screenMode = "youtube";
+    youTubeActive = true;
+}
+
+function deactivateYouTube(){
+    $('#youtube-screen-on').addClass('inactive');
+    youTubeActive = false;
+}
+
+
+var screenMode = "menu";
+const NUM_ROWS = "2";
+const NUM_COLS = "2";
+var menuPosition = [1,1];
 
 var tvRemote = new Snap('#television-remote');
 Snap.load('img/remote.svg', function (response) {
@@ -260,6 +241,23 @@ Snap.load('img/remote.svg', function (response) {
     var muteButton = response.select('#remote-mute-button');
     muteButton.click( muteButtonClickHandler );
     
+    
+    
+    var arrowUpButton = response.select('#remote-up-button');
+    arrowUpButton.click( arrowUpButtonClickHandler );
+    
+    var arrowLeftButton = response.select('#remote-left-button');
+    arrowLeftButton.click( arrowLeftButtonClickHandler );
+    
+    var arrowDownButton = response.select('#remote-down-button');
+    arrowDownButton.click( arrowDownButtonClickHandler );
+    
+    var arrowRightButton = response.select('#remote-right-button');
+    arrowRightButton.click( arrowRightButtonClickHandler );
+    
+    
+    
+    
         
     var playButton = response.select('#remote-play-button');
     playButton.click( playButtonClickHandler );
@@ -288,7 +286,6 @@ Snap.load('img/remote.svg', function (response) {
     tvRemote.append(response);
 });
 
-var screenMode = "menu";
 function powerButtonClickHandler(){
     
     if(screenMode){
@@ -366,6 +363,48 @@ function button2ClickHandler(){
 }
 
 
+function arrowUpButtonClickHandler(){
+   
+   if(screenMode == "menu"){
+        if(menuPosition[1] > 1){
+            var oldMenuPosition = menuPosition.slice();
+            menuPosition[1] -= 1;
+            updateMenuSelection(oldMenuPosition);
+        }
+    }
+}
+
+function arrowLeftButtonClickHandler(){
+    if(screenMode == "menu"){
+        if(menuPosition[0] > 1){
+            var oldMenuPosition = menuPosition.slice();
+            menuPosition[0] -= 1;
+            updateMenuSelection(oldMenuPosition);
+        }
+    }
+}
+
+function arrowDownButtonClickHandler(){
+    if(screenMode == "menu"){
+        if(menuPosition[1] < NUM_ROWS){
+            var oldMenuPosition = menuPosition.slice();
+            menuPosition[1] += 1;
+            updateMenuSelection(oldMenuPosition);
+        }
+    }
+}
+
+function arrowRightButtonClickHandler(){
+     if(screenMode == "menu"){
+        if(menuPosition[0] < NUM_COLS){
+            var oldMenuPosition = menuPosition.slice();
+            
+            menuPosition[0] += 1;
+            updateMenuSelection(oldMenuPosition);
+        }
+    }
+}
+
 
 function playButtonClickHandler(){
     if(screenMode == "youtube"){
@@ -384,6 +423,7 @@ function stopButtonClickHandler(){
     if(screenMode == "youtube"){
         player.stopVideo();
         deactivateYouTube();
+        screenMode = "menu";
     }
 }
 
@@ -402,11 +442,11 @@ function rewindButtonClickHandler(){
 }
 
 function skipForwardButtonClickHandler(){
-    if(screenMode) player.seekTo(player.getCurrentTime() + 30, true);
+    if(screenMode == "youtube") player.seekTo(player.getCurrentTime() + 30, true);
 }
 
 function skipBackButtonClickHandler(){
-    if(screenMode) player.seekTo(player.getCurrentTime() - 30, true);
+    if(screenMode = "youtube") player.seekTo(player.getCurrentTime() - 30, true);
 }
 
 
@@ -424,18 +464,13 @@ $('#video-row-1-col-2').on('click', function(event) {
     player.playVideoAt(1);
  });
 
-
-
-function activateYouTube(){
-    $('#youtube-screen-on').removeClass('inactive');
-    screenMode = "youtube";
-    youTubeActive = true;
+function updateMenuSelection(oldMenuPosition){
+    
+    $("#video-row-" + menuPosition[1] + "-col-" + menuPosition[0]).addClass('menu-selection');
+    $("#video-row-" + oldMenuPosition[1] + "-col-" + oldMenuPosition[0]).removeClass('menu-selection');
 }
 
-function deactivateYouTube(){
-    $('#youtube-screen-on').addClass('inactive');
-    youTubeActive = false;
-}
+
 /*END VIDEO PLAYER STUFF
 #########################*/
 

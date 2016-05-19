@@ -245,4 +245,8 @@ h2 {
   opacity: 0;
   pointer-events: none; }
 
+.menu-selection [id^="border"] {
+  transition-duration: 0.25s;
+  fill: yellow; }
+
 /*# sourceMappingURL=main.css.map */
