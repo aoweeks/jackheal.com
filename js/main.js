@@ -288,27 +288,33 @@ Snap.load('img/remote.svg', function (response) {
     tvRemote.append(response);
 });
 
-var screenOn = true;
+var screenMode = "menu";
 function powerButtonClickHandler(){
     
-    if(screenOn){
-        $('#youtube-screen-on').css('opacity', 0);
+    if(screenMode){
+        deactivateYouTube();
         player.stopVideo();
+        $('#youtube-screen-menu').addClass('inactive');
+        //Make LED red
         $('#youtube-television-led').css('fill', '#A02B33');
+        
+        screenMode = "";
     }
     else{
-        $('#youtube-screen-on').css('opacity', 1);
+        
+        $('#youtube-screen-menu').removeClass('inactive');
+        //Make LED green
         $('#youtube-television-led').css('fill', '#8AA24C');
+        
+        screenMode = "menu";
     }
-    
-    screenOn = !screenOn;
     
 }
 
 
 function volumeUpButtonClickHandler(){
     
-    if(screenOn){
+    if(screenMode){
         //Get volume in case the volume has been adjusted by the user manually
         var playerVolume = player.getVolume();
         playerVolume += 5;
@@ -319,7 +325,7 @@ function volumeUpButtonClickHandler(){
 
 function volumeDownButtonClickHandler(){
     
-    if(screenOn){
+    if(screenMode){
         //Get volume in case the volume has been adjusted by the user manually
         var playerVolume = player.getVolume();
         playerVolume -= 5;
@@ -328,17 +334,17 @@ function volumeDownButtonClickHandler(){
 }
 
 function channelUpButtonClickHandler(){
-    if(screenOn) player.nextVideo();
+    if(screenMode == "youtube") player.nextVideo();
 }
 
 function channelDownButtonClickHandler(){
-    if(screenOn) player.previousVideo();
+    if(screenMode == "youtube") player.previousVideo();
 }
 
 
 function muteButtonClickHandler(){
     
-    if(screenOn){
+    if(screenMode){
         player.isMuted() ? player.unMute() : player.mute()
     }
     
@@ -346,55 +352,61 @@ function muteButtonClickHandler(){
 
 
 function button1ClickHandler(){
-    if(screenOn) player.playVideoAt(0);
+    if(screenMode){
+        player.playVideoAt(0);
+        activateYouTube();
+    }    
 }
 
 function button2ClickHandler(){
-    if(screenOn) player.playVideoAt(1);
+    if(screenMode){
+        player.playVideoAt(1);
+        activateYouTube();
+    }    
 }
 
 
 
 function playButtonClickHandler(){
-    if(screenOn){
+    if(screenMode == "youtube"){
         player.setPlaybackRate(1);
         player.playVideo();
     }
 }
 
 function pauseButtonClickHandler(){
-    if(screenOn){
+    if(screenMode == "youtube"){
         player.pauseVideo();
     }
 }
 
 function stopButtonClickHandler(){
-    if(screenOn){
+    if(screenMode == "youtube"){
         player.stopVideo();
         deactivateYouTube();
     }
 }
 
 function fastForwardButtonClickHandler(){
-    if(screenOn){
+    if(screenMode){
         var speed = player.getPlaybackRate() * 2;
         player.setPlaybackRate(speed);
     }
 }
 
 function rewindButtonClickHandler(){
-    if(screenOn){
+    if(screenMode){
         var speed = player.getPlaybackRate() / 2;
         player.setPlaybackRate(speed);
     }
 }
 
 function skipForwardButtonClickHandler(){
-    if(screenOn) player.seekTo(player.getCurrentTime() + 30, true);
+    if(screenMode) player.seekTo(player.getCurrentTime() + 30, true);
 }
 
 function skipBackButtonClickHandler(){
-    if(screenOn) player.seekTo(player.getCurrentTime() - 30, true);
+    if(screenMode) player.seekTo(player.getCurrentTime() - 30, true);
 }
 
 
@@ -416,6 +428,7 @@ $('#video-row-1-col-2').on('click', function(event) {
 
 function activateYouTube(){
     $('#youtube-screen-on').removeClass('inactive');
+    screenMode = "youtube";
     youTubeActive = true;
 }
 
