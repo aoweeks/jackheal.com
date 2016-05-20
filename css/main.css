@@ -171,16 +171,7 @@ h2 {
   transition-delay: 0.25s; }
 
 .svg-class {
-  -webkit-filter: url(#dropshadow); }
-
-.is-visible {
-  transition-delay: 0s;
-  opacity: 1; }
-
-.is-clickable {
-  cursor: pointer; }
-
-.unselectable {
+  -webkit-filter: url(#dropshadow);
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
   -webkit-user-select: none;
@@ -188,6 +179,13 @@ h2 {
   user-select: none;
   -webkit-user-drag: none;
   user-drag: none; }
+
+.is-visible {
+  transition-delay: 0s;
+  opacity: 1; }
+
+.is-clickable {
+  cursor: pointer; }
 
 .panel-jh {
   border: none;
@@ -235,11 +233,24 @@ h2 {
     width: inherit; }
 
 #television-remote {
-  width: 130px;
-  height: 600px; }
+  height: calc(100vh - 100px);
+  height: -o-calc(100vh - 100px);
+  /* opera */
+  height: -webkit-calc(100vh - 100px);
+  /* google, safari */
+  height: -moz-calc(100vh - 100px);
+  /* firefox */
+  width: 15vw; }
 
 #television-youtube {
-  font-weight: lighter; }
+  height: calc(100vh - 100px);
+  height: -o-calc(100vh - 100px);
+  /* opera */
+  height: -webkit-calc(100vh - 100px);
+  /* google, safari */
+  height: -moz-calc(100vh - 100px);
+  /* firefox */
+  width: 50vw; }
 
 .inactive {
   opacity: 0;

@@ -251,6 +251,10 @@ var menuPosition = [1,1];
 
 var tvYouTube = new Snap('#television-youtube');
 Snap.load('img/television-youtube.svg', function (response) {
+    
+    var videoRow1Col1 = response.select('#video-row-1-col-1');
+    videoRow1Col1.click( videoRow1Col1ClickHandler );
+    
     tvYouTube.append(response);
 });
 
@@ -261,7 +265,7 @@ Snap.load('img/remote.svg', function (response) {
     powerButton.click( powerButtonClickHandler );
     
     /*Channel Number Buttons*/
-    /* Would like to DRY this up, but can't find a way to pass parameters when setting the click handler*/
+    /* Would like to DRY this up*/
     var button1 = response.select('#remote-button-1');
     button1.click( button1ClickHandler );
     
@@ -336,12 +340,17 @@ Snap.load('img/remote.svg', function (response) {
 function powerButtonClickHandler(){
     
     if(screenMode){
+        
+        var oldMenuPosition;
+        
         deactivateYouTube();
         player.stopVideo();
         $('#youtube-screen-menu').addClass('inactive');
         //Make LED red
         $('#youtube-television-led').css('fill', '#A02B33');
-        
+        oldMenuPosition = menuPosition.slice();
+        menuPosition = [1,1];
+        updateMenuSelection(oldMenuPosition);//Reset the menu
         screenMode = "";
     }
     else{
@@ -459,8 +468,7 @@ function enterButtonClickHandler(){
         //Calculate video number from the menu position, which is the column number plus the
         //number of columns in each previous row
         selectedVideo = menuPosition[0] + ((menuPosition[1] - 1) * NUM_COLS);
-        
-        player.playVideoAt(selectedVideo);
+        player.playVideoAt(selectedVideo - 1); // -1 because of the zero indexing
         activateYouTube();
     }
 };
@@ -516,15 +524,10 @@ function skipBackButtonClickHandler(){
 -------------------*/
 var youTubeActive = false;
 
-$('#video-row-1-col-1').on('click', function(event) {
+function videoRow1Col1ClickHandler() {
     activateYouTube();
     player.playVideoAt(0);
- });
- 
-$('#video-row-1-col-2').on('click', function(event) {
-    activateYouTube();
-    player.playVideoAt(1);
- });
+ }
 
 function updateMenuSelection(oldMenuPosition){
     

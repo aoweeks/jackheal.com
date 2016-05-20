@@ -302,6 +302,16 @@ h2{
 
 .svg-class{
   -webkit-filter: url(#dropshadow);
+
+    //To stop the SVG being selected when clicking on elements
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    
+    -webkit-user-drag: none;
+    user-drag: none; 
 }
 
 
@@ -316,19 +326,6 @@ h2{
   cursor: pointer;
   //pointer-events: none;
 }
-
-//To stop the SVG being selected when clicking on elements
-.unselectable {
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    
-    -webkit-user-drag: none;
-    user-drag: none; 
-}
-
 
 .panel-jh{
   border: none;
@@ -400,12 +397,13 @@ h2{
 }
 
 #television-remote{
-  width: 130px;
-  height: 600px;
+  @include avatar-height-calc;
+  width: 15vw
 }
 
 #television-youtube{
-  font-weight: lighter;
+  @include avatar-height-calc;
+  width: 50vw;
 }
 
 .inactive{
