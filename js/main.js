@@ -138,7 +138,7 @@ function checkIfMovedToNewSection(goingDown){
         }
         else{
             
-            scrollToSection(topSection - 99);
+            scrollToSection(bottomSection - $(window).height());
             getSectionTops();
         }
     }
