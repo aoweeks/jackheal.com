@@ -397,12 +397,19 @@ h2{
 }
 
 #television-remote{
-  @include avatar-height-calc;
+  
+  height: calc(50vh - 100px);
+  
+  height: -o-calc(50vh - 100px); /* opera */
+  height: -webkit-calc(50vh - 100px); /* google, safari */
+  height: -moz-calc(50vh - 100px); /* firefox */
+  
   width: 15vw
 }
 
 #television-youtube{
   @include avatar-height-calc;
+  
   width: 50vw;
 }
 
