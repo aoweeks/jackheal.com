@@ -249,6 +249,12 @@ const NUM_ROWS = "2";
 const NUM_COLS = "2";
 var menuPosition = [1,1];
 
+
+var tvYouTube = new Snap('#television-youtube');
+Snap.load('img/television-youtube.svg', function (response) {
+    tvYouTube.append(response);
+});
+
 var tvRemote = new Snap('#television-remote');
 Snap.load('img/remote.svg', function (response) {
     
@@ -294,6 +300,9 @@ Snap.load('img/remote.svg', function (response) {
     var arrowRightButton = response.select('#remote-right-button');
     arrowRightButton.click( arrowRightButtonClickHandler );
     
+    
+    var enterButton = response.select('#remote-enter-button');
+    enterButton.click( enterButtonClickHandler );
     
     
     
@@ -443,6 +452,21 @@ function arrowRightButtonClickHandler(){
         }
     }
 }
+
+function enterButtonClickHandler(){
+    if(screenMode = "menu"){
+        var selectedVideo;
+        
+        //Calculate video number from the menu position, which is the column number plus the
+        //number of columns in each previous row
+        selectedVideo = menuPosition[0] + ((menuPosition[1] - 1) * NUM_COLS);
+        
+        player.playVideoAt(selectedVideo);
+        activateYouTube();
+    }
+};
+
+
 
 
 function playButtonClickHandler(){
