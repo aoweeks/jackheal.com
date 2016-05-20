@@ -111,6 +111,45 @@ function getSectionTops(){
 }
 
 
+function checkIfMovedToNewSection(goingDown){
+    
+    var windowTop = $(document).scrollTop() + 99;
+    var windowBottom = $(document).scrollTop() + $(window).height();
+    
+    
+    var topSection;
+    var bottomSection;
+    
+    for(i = 0; i < sectionTops.length; i++){
+        if(windowTop >= sectionTops[i] && windowTop < sectionTops[i + 1]) topSection = sectionTops[i];
+        if(windowBottom >= sectionTops[i] && windowTop < sectionTops[i + 1]) bottomSection = sectionTops[i];
+    }
+    
+    //Prevent autoscrolling when reaching the top or body of the page
+    if(windowTop < 100) return;
+    if(windowBottom > $("#footer").offset().top) return;
+    
+    
+    
+    //If the window has moved into a new section
+    if(topSection != bottomSection){
+        if(goingDown){
+            scrollToSection(bottomSection - 99);
+            getSectionTops();
+        }
+        else{
+            
+            scrollToSection(topSection - 99);
+            getSectionTops();
+        }
+    }
+}
+
+
+
+
+
+
 /* END SECTION SCROLLING STUFF
 #############################*/
 
@@ -557,38 +596,6 @@ function updateBasedOnScrollPosition(){
     }
     
 }
-
-
-function checkIfMovedToNewSection(goingDown){
-    
-    var windowTop = $(document).scrollTop() + 99;
-    var windowBottom = $(document).scrollTop() + $(window).height();
-    
-    
-    var topSection;
-    var bottomSection;
-    
-    for(i = 0; i < sectionTops.length; i++){
-        if(windowTop >= sectionTops[i] && windowTop < sectionTops[i + 1]) topSection = sectionTops[i];
-        if(windowBottom >= sectionTops[i] && windowTop < sectionTops[i + 1]) bottomSection = sectionTops[i];
-    }
-    
-    console.log("WINDOW TOP: " + windowTop + " + WINDOW BOTTOM: " + windowBottom);
-    console.log("TOP: " + topSection + " + BOTTOM : " + bottomSection);
-    console.log(sectionTops);
-    //If the window has moved into a new section
-    if(topSection != bottomSection){
-        if(goingDown){
-            scrollToSection(bottomSection - 99);
-        }
-        else{
-            
-            scrollToSection(topSection - 99);
-        }
-    }
-}
-
-
 
 
 
