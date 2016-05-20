@@ -36,7 +36,6 @@ $(window).resize( function (event){
 $(document).ready( function (event){
     getSectionPointInfo();
     updateBasedOnScrollPosition();
-    placeYouTubeScreen();    
     getSectionTops();
 });
 
