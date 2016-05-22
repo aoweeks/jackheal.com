@@ -254,6 +254,22 @@ Snap.load('img/television-youtube.svg', function (response) {
     
     var videoRow1Col1 = response.select('#video-row-1-col-1');
     videoRow1Col1.click( videoRow1Col1ClickHandler );
+    videoRow1Col1.mouseover(  videoRow1Col1MouseoverHandler );
+    
+    
+    var videoRow1Col2 = response.select('#video-row-1-col-2');
+    videoRow1Col2.click( videoRow1Col2ClickHandler );
+    videoRow1Col2.mouseover(  videoRow1Col2MouseoverHandler );
+    
+    
+    var videoRow2Col1 = response.select('#video-row-2-col-1');
+    videoRow2Col1.click( videoRow2Col1ClickHandler );
+    videoRow2Col1.mouseover(  videoRow2Col1MouseoverHandler );
+    
+    
+    var videoRow2Col2 = response.select('#video-row-2-col-2');
+    videoRow2Col2.click( videoRow2Col2ClickHandler );
+    videoRow2Col2.mouseover(  videoRow2Col2MouseoverHandler );
     
     tvYouTube.append(response);
 });
@@ -524,15 +540,64 @@ function skipBackButtonClickHandler(){
 -------------------*/
 var youTubeActive = false;
 
+function videoRow1Col1MouseoverHandler() {
+    var oldMenuPosition = menuPosition.slice();
+    
+    menuPosition = [1, 1];
+    updateMenuSelection(oldMenuPosition);
+}
+
+
+function videoRow1Col2MouseoverHandler() {
+    var oldMenuPosition = menuPosition.slice();
+    
+    menuPosition = [2, 1];
+    updateMenuSelection(oldMenuPosition);
+}
+
+function videoRow2Col1MouseoverHandler() {
+    var oldMenuPosition = menuPosition.slice();
+    
+    menuPosition = [1, 2];
+    updateMenuSelection(oldMenuPosition);
+}
+
+function videoRow2Col2MouseoverHandler() {
+    var oldMenuPosition = menuPosition.slice();
+    
+    menuPosition = [2, 2];
+    updateMenuSelection(oldMenuPosition);
+}
+
 function videoRow1Col1ClickHandler() {
     activateYouTube();
     player.playVideoAt(0);
  }
 
+function videoRow1Col2ClickHandler() {
+    activateYouTube();
+    player.playVideoAt(1);
+ }
+ 
+ function videoRow2Col1ClickHandler() {
+    activateYouTube();
+    player.playVideoAt(2);
+ }
+ 
+ function videoRow2Col2ClickHandler() {
+    activateYouTube();
+    player.playVideoAt(3);
+ }
+
 function updateMenuSelection(oldMenuPosition){
     
-    $("#video-row-" + menuPosition[1] + "-col-" + menuPosition[0]).addClass('menu-selection');
-    $("#video-row-" + oldMenuPosition[1] + "-col-" + oldMenuPosition[0]).removeClass('menu-selection');
+    //If the position hasn't changed, do nothing, otherwise the highlight disappears
+    if(menuPosition[0] != oldMenuPosition[0] || menuPosition[1] != oldMenuPosition[1]){
+        
+        $("#video-row-" + menuPosition[1] + "-col-" + menuPosition[0]).addClass('menu-selection');
+        $("#video-row-" + oldMenuPosition[1] + "-col-" + oldMenuPosition[0]).removeClass('menu-selection');
+    }
+
 }
 
 
