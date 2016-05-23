@@ -242,6 +242,16 @@ h2 {
   /* firefox */
   width: 15vw; }
 
+#poster-stand {
+  height: calc(75vh - 100px);
+  height: -o-calc(75vh - 100px);
+  /* opera */
+  height: -webkit-calc(75vh - 100px);
+  /* google, safari */
+  height: -moz-calc(75vh - 100px);
+  /* firefox */
+  width: 25vw; }
+
 #television-youtube {
   height: calc(100vh - 100px);
   height: -o-calc(100vh - 100px);

@@ -407,6 +407,17 @@ h2{
   width: 15vw
 }
 
+#poster-stand{
+  
+  height: calc(75vh - 100px);
+  
+  height: -o-calc(75vh - 100px); /* opera */
+  height: -webkit-calc(75vh - 100px); /* google, safari */
+  height: -moz-calc(75vh - 100px); /* firefox */
+  
+  width: 25vw
+}
+
 #television-youtube{
   @include avatar-height-calc;
   
