@@ -197,11 +197,20 @@ function monitorClickHandler(){
 
 
 var posterStand = new Snap('#poster-stand');
+
 Snap.load('img/poster-stand.svg', function (response) {
+    posterMask = response.select('#poster-mask');
+    posters = response.select('#posters');
+    
+    posters.attr({
+       mask: posterMask 
+    });
+    
+    
     posterStand.append(response);
+
 });
 
-var thePoster = posterStand.image("img/murderthon.jpg", 181.386, -118.162, 542.798, 767.714);
 
 
 /* VIDEO PLAYER STUFF
