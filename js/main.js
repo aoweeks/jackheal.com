@@ -225,7 +225,7 @@ Snap.load('img/poster-stand.svg', function (response) {
 
 
 var whichPoster = 1;
-setTimeout(movePosters, 3000);
+//setTimeout(movePosters, 3000);
 function movePosters(){
     if(whichPoster < numberOfPosters){
         setTimeout(movePostersDown, 6000);
@@ -244,7 +244,7 @@ function movePostersUp(){
     posterMask.animate({ transform: moveUpMatrix}, 3000 );
     posters.animate({ transform: moveDownMatrix}, 3000 );
     
-    movePosters();
+    //movePosters();
     
 }
 
@@ -257,7 +257,7 @@ function movePostersDown(){
     posterMask.animate({ transform: moveDownMatrix}, 3000 );
     posters.animate({ transform: moveUpMatrix}, 3000 );
     
-    movePosters();
+    //movePosters();
 }
 
 /* VIDEO PLAYER STUFF
@@ -757,4 +757,14 @@ $('.section').on('click', function (event) {
 
 $('#footer').on('click', function (event) {
     console.log($(this).offset().top);
+});
+
+
+$('#up').on('click', function (event) {
+    movePostersUp();
+});
+
+
+$('#down').on('click', function (event) {
+    movePostersDown();
 });
