@@ -198,20 +198,55 @@ function monitorClickHandler(){
 
 var posterStand = new Snap('#poster-stand');
 
+var posters;
+var posterHeight;
+var moveUpMatrix  = new Snap.Matrix();
+var moveDownMatrix = new Snap.Matrix();
+
 Snap.load('img/poster-stand.svg', function (response) {
+    
+    
     posterMask = response.select('#poster-mask');
     posters = response.select('#posters');
+    var poster = response.select("#synthetic-sheep").getBBox();
+    
+    
+    posterHeight = poster.height;
     
     posters.attr({
        mask: posterMask 
     });
     
-    
     posterStand.append(response);
-
+    
 });
 
 
+setTimeout(movePostersDown, 3000);
+
+
+function movePostersUp(){
+    
+    moveUpMatrix.translate(0, posterHeight);
+    moveDownMatrix.translate(0,  -posterHeight);
+    
+    posterMask.animate({ transform: moveUpMatrix}, 3000 );
+    posters.animate({ transform: moveDownMatrix}, 3000 );
+    
+    setTimeout(movePostersDown, 6000);
+}
+
+function movePostersDown(){
+    
+    var postersTop = posters.get
+    moveUpMatrix.translate(0, -posterHeight);
+    moveDownMatrix.translate(0,  posterHeight);
+    
+    posterMask.animate({ transform: moveDownMatrix}, 3000 );
+    posters.animate({ transform: moveUpMatrix}, 3000 );
+    
+    setTimeout(movePostersUp, 6000);
+}
 
 /* VIDEO PLAYER STUFF
 ########################*/

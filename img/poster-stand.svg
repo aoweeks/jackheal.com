@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="748px"
-	 height="1190.549px" viewBox="47.445 0 748 1190.549" enable-background="new 47.445 0 748 1190.549" xml:space="preserve">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="47.445 0 748 1190.549" enable-background="new 47.445 0 748 1190.549" xml:space="preserve">
 <g id="poster-stand">
 	<path id="poster-frame" fill="#6D6D6D" d="M779.172,19.775H63.718c-3.666,0-6.637,2.971-6.637,6.637v960.489
 		c0,3.666,2.971,6.637,6.637,6.637h228.946v152.82h-41.953c-3.666,0-6.637,2.971-6.637,6.637v28.872h353.553v-28.872
@@ -12,7 +12,7 @@
 </g>
 <g id="posters">
 	
-		<image overflow="visible" width="724" height="1024" id="syntheticSheep" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsK
+		<image overflow="visible" width="724" height="1024" id="synthetic-sheep" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsK
 CwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQU
 FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wgARCAQAAtQDAREA
 AhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAABAIDBQYAAQcICf/EABsBAQACAwEBAAAAAAAAAAAA
@@ -3952,7 +3952,7 @@ fnx9N4b5iiorj8JlAni2tkfyc4am8jZ5vhwNqHU3gEbrxTOMY98BklKEyDTaPzmq9iOGAyYNb6yU
 kQLu40w5Xo/9Y6anc05FZn//2Q==" transform="matrix(0.8284 0 0 0.8284 120.9763 80.2)">
 	</image>
 	
-		<image overflow="visible" width="724" height="1024" id="frankensteinsMonster" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/4R/QRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUA
+		<image overflow="visible" width="724" height="1024" id="frankensteins-monster" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/4R/QRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUA
 AAABAAAAYgEbAAUAAAABAAAAagEoAAMAAAABAAIAAAExAAIAAAAMAAAAcgEyAAIAAAAUAAAAfodp
 AAQAAAABAAAAkgAAANQAAAEsAAAAAQAAASwAAAABR0lNUCAyLjguMTAAMjAxNTowODowNSAyMDoz
 ODo0OQAABZAAAAcAAAAEMDIyMaAAAAcAAAAEMDEwMKABAAMAAAAB//8AAKACAAQAAAABAAAC1KAD
@@ -7116,7 +7116,7 @@ lwZcuHaXt8FlyqOyBr9/yQhxB05S/THHdVy0fqf/AL50G5ram3FjqZWnS3nydHLzHY5eY5gNXUag
 tncA4fUelx2pGoDS/P8A/IhSYR7ik0cnK5Trgutk/9k=" transform="matrix(0.8284 0 0 0.8284 120.9758 928.4622)">
 	</image>
 </g>
-
-<rect id="poster-mask" x="120.976" y="80.2" fill="#6D6D6D" width="599.748" height="848.262"/>
-
+<g id="Layer_3">
+	<rect id="poster-mask" x="120.976" y="80.2" fill="#FFFFFF" width="599.748" height="848.262"/>
+</g>
 </svg>
