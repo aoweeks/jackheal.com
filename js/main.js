@@ -1,3 +1,4 @@
+const numberOfPosters = 4;
 
 var sectionTops = [];
 
@@ -222,8 +223,18 @@ Snap.load('img/poster-stand.svg', function (response) {
 });
 
 
-setTimeout(movePostersDown, 3000);
 
+var whichPoster = 1;
+setTimeout(movePosters, 3000);
+function movePosters(){
+    if(whichPoster < numberOfPosters){
+        setTimeout(movePostersDown, 6000);
+    }
+    else if(whichPoster >= numberOfPosters){
+        setTimeout(movePostersUp, 6000);
+    }
+    whichPoster++;
+}
 
 function movePostersUp(){
     
@@ -233,7 +244,8 @@ function movePostersUp(){
     posterMask.animate({ transform: moveUpMatrix}, 3000 );
     posters.animate({ transform: moveDownMatrix}, 3000 );
     
-    setTimeout(movePostersDown, 6000);
+    movePosters();
+    
 }
 
 function movePostersDown(){
@@ -245,7 +257,7 @@ function movePostersDown(){
     posterMask.animate({ transform: moveDownMatrix}, 3000 );
     posters.animate({ transform: moveUpMatrix}, 3000 );
     
-    setTimeout(movePostersUp, 6000);
+    movePosters();
 }
 
 /* VIDEO PLAYER STUFF
