@@ -589,6 +589,9 @@ function playButtonClickHandler(){
         player.setPlaybackRate(1);
         player.playVideo();
     }
+    else if(screenMode == "menu"){
+        enterButtonClickHandler();
+    }
 }
 
 function pauseButtonClickHandler(){
