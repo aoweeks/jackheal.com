@@ -201,18 +201,27 @@ var posterStand = new Snap('#poster-stand');
 
 var posters;
 var posterHeight;
-var moveUpMatrix  = new Snap.Matrix();
-var moveDownMatrix = new Snap.Matrix();
 
 Snap.load('img/poster-stand.svg', function (response) {
     
     
     posterMask = response.select('#poster-mask');
     posters = response.select('#posters');
-    var poster = response.select("#synthetic-sheep").getBBox();
+    
+    var syntheticSheepPoster = response.select("#synthetic-sheep-poster");
+    syntheticSheepPoster.click( syntheticSheepPosterClickHandler );
+    
+    var murderthonPoster = response.select("#murderthon-poster");
+    murderthonPoster.click( murderthonPosterClickHandler );
+    
+    var killingMachinesPoster = response.select("#killing-machines-poster");
+    killingMachinesPoster.click( killingMachinesPosterClickHandler );
+    
+    var frankensteinsMonsterPoster = response.select("#frankensteins-monster-poster");
+    frankensteinsMonsterPoster.click( frankensteinsMonsterPosterClickHandler );
     
     
-    posterHeight = poster.height;
+    posterHeight = syntheticSheepPoster.getBBox().height;
     
     posters.attr({
        mask: posterMask 
@@ -222,42 +231,69 @@ Snap.load('img/poster-stand.svg', function (response) {
     
 });
 
+function syntheticSheepPosterClickHandler(){
+    console.log("SHEEEEP");
+}
 
+function murderthonPosterClickHandler(){
+    console.log("SadsEEEP");
+}
 
-var whichPoster = 1;
-//setTimeout(movePosters, 3000);
+function killingMachinesPosterClickHandler(){
+    console.log("SHasdsdEEP");
+}
+
+function frankensteinsMonsterPosterClickHandler(){
+    console.log("SfasP");
+}
+
+var whichPoster = 0;
+var postersGoingUp = true;
+
+setTimeout(movePosters, 3000);
 function movePosters(){
-    if(whichPoster < numberOfPosters){
-        setTimeout(movePostersDown, 6000);
+    if(whichPoster == numberOfPosters - 1){
+        postersGoingUp = false;
     }
-    else if(whichPoster >= numberOfPosters){
-        setTimeout(movePostersUp, 6000);
+    else if(whichPoster < 1){
+        postersGoingUp = true;
     }
-    whichPoster++;
+    
+    if(postersGoingUp == true){
+        setTimeout(movePostersUp, 3000);
+    }
+    else if(postersGoingUp == false){
+        setTimeout(movePostersDown, 3000);
+    }
 }
 
 function movePostersUp(){
+    whichPoster++;
+    var moveUpMatrix  = new Snap.Matrix();
+    var moveDownMatrix = new Snap.Matrix();
     
-    moveUpMatrix.translate(0, posterHeight);
-    moveDownMatrix.translate(0,  -posterHeight);
+    moveUpMatrix.translate(0, posterHeight * whichPoster);
+    moveDownMatrix.translate(0,  -posterHeight * whichPoster);
     
     posterMask.animate({ transform: moveUpMatrix}, 3000 );
     posters.animate({ transform: moveDownMatrix}, 3000 );
-    
-    //movePosters();
+    console.log(posterHeight);
+    setTimeout(movePosters, 3000);
     
 }
 
 function movePostersDown(){
     
-    var postersTop = posters.get
-    moveUpMatrix.translate(0, -posterHeight);
-    moveDownMatrix.translate(0,  posterHeight);
+    whichPoster--;
+    var moveUpMatrix  = new Snap.Matrix();
+    var moveDownMatrix = new Snap.Matrix();
+    
+    moveUpMatrix.translate(0, -posterHeight * whichPoster);
+    moveDownMatrix.translate(0,  posterHeight * whichPoster);
     
     posterMask.animate({ transform: moveDownMatrix}, 3000 );
     posters.animate({ transform: moveUpMatrix}, 3000 );
-    
-    //movePosters();
+    setTimeout(movePosters, 3000);
 }
 
 /* VIDEO PLAYER STUFF
@@ -750,14 +786,6 @@ function updateBasedOnScrollPosition(){
 /* DEBUGGING FUNCTIONS
 ########################*/
 
-$('.section').on('click', function (event) {
-    console.log($(this).offset().top);
-});
-
-
-$('#footer').on('click', function (event) {
-    console.log($(this).offset().top);
-});
 
 
 $('#up').on('click', function (event) {
