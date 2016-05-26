@@ -389,6 +389,13 @@ Snap.load('img/remote.svg', function (response) {
     button2.click( button2ClickHandler );
     
     
+    var menuButton = response.select('#menu-button');
+    menuButton.click( stopButtonClickHandler );
+    
+    var backButton = response.select('#back-button');
+    backButton.click( stopButtonClickHandler );
+    
+    
     var channelUpButton = response.select('#remote-channel-up-button');
     channelUpButton.click( channelUpButtonClickHandler );
     

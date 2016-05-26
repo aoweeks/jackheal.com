@@ -404,7 +404,17 @@ h2{
   height: -webkit-calc(50vh - 100px); /* google, safari */
   height: -moz-calc(50vh - 100px); /* firefox */
   
-  width: 15vw
+  width: 12vw;
+  
+ 
+  transform: translateY(66%);
+  text-align: center;
+  
+  /*Every ID that contains the substring "button". tather than using classes because everytime
+  it's opened in illustrator the classes will be stripped out*/
+  [id*="button"]:hover{
+    cursor: pointer;
+  }
 }
 
 #poster-stand{
@@ -422,6 +432,12 @@ h2{
   @include avatar-height-calc;
   
   width: 50vw;
+  
+   /*Every ID that contains the substring "button". tather than using classes because everytime
+  it's opened in illustrator the classes will be stripped out*/
+  [id*="video-row-"]:hover{
+    cursor: pointer;
+  }
 }
 
 .inactive{
@@ -429,7 +445,11 @@ h2{
   pointer-events: none;
 }
 
-.menu-selection [id^="border"]{
-    transition-duration: 0.25s;
-    fill: yellow;  
+
+//Any element with an ID beginning with border, nested within a menu-selection class
+.menu-selection{
+    [id^="border"]{
+      transition-duration: 0.25s;
+      fill: yellow;
+    }
 }

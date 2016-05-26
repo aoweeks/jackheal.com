@@ -240,7 +240,13 @@ h2 {
   /* google, safari */
   height: -moz-calc(50vh - 100px);
   /* firefox */
-  width: 15vw; }
+  width: 12vw;
+  transform: translateY(66%);
+  text-align: center;
+  /*Every ID that contains the substring "button". tather than using classes because everytime
+  it's opened in illustrator the classes will be stripped out*/ }
+  #television-remote [id*="button"]:hover {
+    cursor: pointer; }
 
 #poster-stand {
   height: calc(75vh - 100px);
@@ -260,7 +266,11 @@ h2 {
   /* google, safari */
   height: -moz-calc(100vh - 100px);
   /* firefox */
-  width: 50vw; }
+  width: 50vw;
+ /*Every ID that contains the substring "button". tather than using classes because everytime
+it's opened in illustrator the classes will be stripped out*/ }
+  #television-youtube [id*="video-row-"]:hover {
+    cursor: pointer; }
 
 .inactive {
   opacity: 0;
