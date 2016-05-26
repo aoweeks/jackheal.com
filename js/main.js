@@ -461,7 +461,7 @@ function powerButtonClickHandler(){
         
         deactivateYouTube();
         player.stopVideo();
-        $('#youtube-screen-menu').addClass('inactive');
+        $('#youtube-smart-menu').addClass('inactive');
         //Make LED red
         $('#youtube-television-led').css('fill', '#A02B33');
         oldMenuPosition = menuPosition.slice();
@@ -471,7 +471,7 @@ function powerButtonClickHandler(){
     }
     else{
         
-        $('#youtube-screen-menu').removeClass('inactive');
+        $('#youtube-smart-menu').removeClass('inactive');
         //Make LED green
         $('#youtube-television-led').css('fill', '#8AA24C');
         
@@ -769,6 +769,7 @@ function updateBasedOnScrollPosition(){
         $("#lab-background").css("opacity", 0);
         $("#comedy-club-background").css("opacity", 1);
         $("#comedy-club-foreground").css("opacity", 1);
+        $('#media-background').css("opacity", 0);
         $("#contact-background").css("opacity", 0);
         
     }
@@ -777,6 +778,7 @@ function updateBasedOnScrollPosition(){
         $(".title-cap").css("color", mediaColour);
         $("#comedy-club-background").css("opacity", 0);
         $("#comedy-club-foreground").css("opacity", 0);
+        $('#media-background').css("opacity", 1);
         $("#contact-background").css("opacity", 0);
         
     }
@@ -786,6 +788,7 @@ function updateBasedOnScrollPosition(){
         $(".title-cap").css("color", contactColour);
         $("#comedy-club-background").css("opacity", 0);
         $("#comedy-club-foreground").css("opacity", 0);
+        $('#media-background').css("opacity", 0);
         $("#contact-background").css("opacity", 1);
     }
     

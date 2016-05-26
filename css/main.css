@@ -165,7 +165,7 @@ h2 {
   fill: #EEE; }
 
 #comedy-club-background, #comedy-club-foreground,
-#lab-background, #contact-background {
+#lab-background, #media-background, #contact-background {
   opacity: 0;
   transition-duration: 0.5s;
   transition-delay: 0.25s; }
