@@ -11,6 +11,14 @@ var mediaPoint;
 var contactPoint;
 
 
+var previousShows = {
+    syntheticSheep : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : ""},
+    frankensteinsMonster : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : ""},
+    killingMachines : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : ""},
+    murderthon : { "title" : "Jack Heal's Murderthon", "content" : ""}    
+}
+
+
 $('a[href^="#"]').on('click', function(event) {
 
     var target = $( $(this).attr('href') );
