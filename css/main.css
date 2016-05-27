@@ -110,11 +110,10 @@ h2 {
     font-size: 1.5em;
     font-family: "Passion One", cursive; }
     .navbar-jh .navbar-nav li {
-      padding-right: 30px;
       text-align: center; }
       .navbar-jh .navbar-nav li .nav-icon {
         height: 45px;
-        width: 40px;
+        max-width: 40px;
         margin: none;
         padding-bottom: 3px; }
     .navbar-jh .navbar-nav a:hover {
@@ -122,15 +121,17 @@ h2 {
     .navbar-jh .navbar-nav a:focus {
       background-color: #2F4550; }
 
-.contact-nav-link:hover #Flap {
+/* ADD BACK LATER
+.contact-nav-link:hover #Flap{
   fill: #AAA;
   transition-duration: 1s;
-  transform: translate(0%, -100%) rotateX(180deg); }
+  transform: translate(0%, -100%) rotateX(180deg);
+}
 
-.dates-nav-link:hover #top-page {
+.dates-nav-link:hover #top-page{
   transform: rotateX(180deg);
-  transition-duration: 1s; }
-
+  transition-duration: 1s;
+}*/
 #top {
   background-color: #3299BB; }
 
@@ -160,6 +161,10 @@ h2 {
 
 #contact {
   background-color: #8AA24C; }
+  #contact a {
+    color: darkgreen; }
+  #contact a:hover {
+    color: white; }
 
 #Flap {
   fill: #EEE; }
@@ -220,10 +225,11 @@ h2 {
   -webkit-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25);
   box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25); }
 
-.gallery-image:hover {
-  border-color: #2F4550;
-  cursor: pointer; }
-
+/* ADD BACK IN LATER
+.gallery-image:hover{
+  border-color: $navbar-background;
+  cursor: pointer;
+}*/
 #youtube-screen-on {
   position: absolute;
   background-color: none;
@@ -256,7 +262,11 @@ h2 {
   /* google, safari */
   height: -moz-calc(75vh - 100px);
   /* firefox */
-  width: 25vw; }
+  width: 25vw;
+  /*Every ID that contains the substring "button". tather than using classes because everytime
+  it's opened in illustrator the classes will be stripped out*/ }
+  #poster-stand [id*="poster"]:hover {
+    cursor: pointer; }
 
 #television-youtube {
   height: calc(100vh - 100px);
@@ -267,8 +277,8 @@ h2 {
   height: -moz-calc(100vh - 100px);
   /* firefox */
   width: 50vw;
- /*Every ID that contains the substring "button". tather than using classes because everytime
-it's opened in illustrator the classes will be stripped out*/ }
+  /*Every ID that contains the substring "video-row-". tather than using classes because everytime
+  it's opened in illustrator the classes will be stripped out*/ }
   #television-youtube [id*="video-row-"]:hover {
     cursor: pointer; }
 

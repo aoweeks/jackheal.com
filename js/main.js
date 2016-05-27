@@ -12,10 +12,16 @@ var contactPoint;
 
 
 var previousShows = {
-    syntheticSheep : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : ""},
-    frankensteinsMonster : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : ""},
-    killingMachines : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : ""},
-    murderthon : { "title" : "Jack Heal's Murderthon", "content" : ""}    
+    syntheticSheep : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : `The Fringe's first ever comedy lecture on synthetic biology.
+Supported by the Royal Society of Chemistry, this is a show that answers pressing questions like: What is a spider-goat? Can we create artificial life? And why haven’t we made Jurassic Park yet?`},
+    frankensteinsMonster : { "title" : "Frankenstein's Love Monster", "content" : `The story of a zoo-keeper who falls in love with a modern-day Dr. Frankenstein.
+There is something strange going on in the catacombs under the otter cage. Inside these ottercombs, someone is conducting an experiment.
+Find out just how far one man will go to impress a girl who has a face like Keira Knightley has a face.`},
+    killingMachines : { "title" : "Jack and Nikki: Killing Machines", "content" : `Jack Heal (Chortle Student Comedian 2008) and Nikki Blemings (a girl) request the pleasure of your company at their business seminar on contract killing.
+Bring cash for this once in a lifetime opportunity.
+Goggles optional.`},
+    murderthon : { "title" : "Jack Heal's Murderthon", "content" : `Jack Heal is a man with an axe to grind. A literal axe.
+Join him for his spoken word show, Murderthon: a tale of vengeance, death threats and unexpected sentence endings.`}    
 }
 
 
@@ -314,10 +320,10 @@ var player;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-screen-on', {
-        videoId: 'S26XIyT5BCI',
+        videoId: 'ajhgAqEnT38',
         playerVars: {
             color: 'white',
-            playlist: 'Zk-hz7ki4H8'
+            playlist: 'Zk-hz7ki4H8, RoY1FFBBZQQ, S26XIyT5BCI'
         },
         events: {
             onReady: initializeYouTube
@@ -387,6 +393,12 @@ Snap.load('img/remote.svg', function (response) {
     
     var button2 = response.select('#remote-button-2');
     button2.click( button2ClickHandler );
+    
+    var button3 = response.select('#remote-button-3');
+    button3.click( button3ClickHandler );
+    
+    var button4 = response.select('#remote-button-4');
+    button4.click( button4ClickHandler );
     
     
     var menuButton = response.select('#menu-button');
@@ -537,6 +549,20 @@ function button1ClickHandler(){
 function button2ClickHandler(){
     if(screenMode){
         player.playVideoAt(1);
+        activateYouTube();
+    }    
+}
+
+function button3ClickHandler(){
+    if(screenMode){
+        player.playVideoAt(2);
+        activateYouTube();
+    }    
+}
+
+function button4ClickHandler(){
+    if(screenMode){
+        player.playVideoAt(3);
         activateYouTube();
     }    
 }

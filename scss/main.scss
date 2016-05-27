@@ -196,12 +196,11 @@ h2{
       font-family: $header-font;
       
       li{
-        padding-right: 30px;
         text-align: center;
         
       .nav-icon{
           height: 45px;
-          width: 40px;
+          max-width: 40px;
           margin: none;
           padding-bottom: 3px;
        }
@@ -218,7 +217,7 @@ h2{
       }
   }
 }
-
+/* ADD BACK LATER
 .contact-nav-link:hover #Flap{
   fill: #AAA;
   transition-duration: 1s;
@@ -228,7 +227,7 @@ h2{
 .dates-nav-link:hover #top-page{
   transform: rotateX(180deg);
   transition-duration: 1s;
-}
+}*/
 
 
 #top{
@@ -282,6 +281,14 @@ h2{
 
 #contact{
   background-color: #8AA24C;
+  
+  a{
+    color: darkgreen;
+  }
+  
+  a:hover{
+    color: white;
+  }
 }
 
 
@@ -380,10 +387,11 @@ h2{
   @include element-shadow;
 }
 
+/* ADD BACK IN LATER
 .gallery-image:hover{
   border-color: $navbar-background;
   cursor: pointer;
-}
+}*/
 
 #youtube-screen-on{
   position: absolute;
@@ -425,7 +433,13 @@ h2{
   height: -webkit-calc(75vh - 100px); /* google, safari */
   height: -moz-calc(75vh - 100px); /* firefox */
   
-  width: 25vw
+  width: 25vw;
+  
+  /*Every ID that contains the substring "button". tather than using classes because everytime
+  it's opened in illustrator the classes will be stripped out*/
+  [id*="poster"]:hover{
+    cursor: pointer;
+  }
 }
 
 #television-youtube{
@@ -433,7 +447,7 @@ h2{
   
   width: 50vw;
   
-   /*Every ID that contains the substring "button". tather than using classes because everytime
+  /*Every ID that contains the substring "video-row-". tather than using classes because everytime
   it's opened in illustrator the classes will be stripped out*/
   [id*="video-row-"]:hover{
     cursor: pointer;
