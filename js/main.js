@@ -12,7 +12,7 @@ var contactPoint;
 
 
 var previousShows = {
-    syntheticSheep : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : `The Fringe's first ever comedy lecture on synthetic biology.
+    syntheticSheep : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : `<p>The Fringe's first ever comedy lecture on synthetic biology.</p>
 Supported by the Royal Society of Chemistry, this is a show that answers pressing questions like: What is a spider-goat? Can we create artificial life? And why haven’t we made Jurassic Park yet?`},
     frankensteinsMonster : { "title" : "Frankenstein's Love Monster", "content" : `The story of a zoo-keeper who falls in love with a modern-day Dr. Frankenstein.
 There is something strange going on in the catacombs under the otter cage. Inside these ottercombs, someone is conducting an experiment.
@@ -246,19 +246,23 @@ Snap.load('img/poster-stand.svg', function (response) {
 });
 
 function syntheticSheepPosterClickHandler(){
-    console.log("SHEEEEP");
+    $('#past-show-title').html(previousShows['syntheticSheep'].title);
+    $('#past-show-description').html(previousShows['syntheticSheep'].content);
 }
 
 function murderthonPosterClickHandler(){
-    console.log("SadsEEEP");
+    $('#past-show-title').html(previousShows['murderthon'].title);
+    $('#past-show-description').html(previousShows['murderthon'].content);
 }
 
 function killingMachinesPosterClickHandler(){
-    console.log("SHasdsdEEP");
+    $('#past-show-title').html(previousShows['killingMachines'].title);
+    $('#past-show-description').html(previousShows['killingMachines'].content);
 }
 
 function frankensteinsMonsterPosterClickHandler(){
-    console.log("SfasP");
+    $('#past-show-title').html(previousShows['frankensteinsMonster'].title);
+    $('#past-show-description').html(previousShows['frankensteinsMonster'].content);
 }
 
 var whichPoster = 0;
