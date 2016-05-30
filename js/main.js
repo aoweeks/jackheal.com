@@ -38,6 +38,7 @@ $('a[href^="#"]').on('click', function(event) {
 
 var lastScrollPos = 0;
 var disableScrollAtStart = true;
+var documentIsReady = false;
 
 $(window).scroll( function (event) {
     var goingDown;
@@ -45,7 +46,10 @@ $(window).scroll( function (event) {
     goingDown = $(document).scrollTop() > lastScrollPos ? true : false;
     
     updateBasedOnScrollPosition();
+    updateAnimations();
     if(!autoScrolling) scrollCheckSection(goingDown);
+    
+    if(documentIsReady) updateAnimations();
 });
 
 $(window).resize( function (event){
@@ -61,10 +65,15 @@ $(document).ready( function (event){
     updateBasedOnScrollPosition();
     getSectionTops();
     
+    
     //kludge to get around buggy behaviour when page is first loading
     setTimeout(function(){
+        
+        documentIsReady = true;
         disableScrollAtStart = false;
+        updateAnimations();
     }, 300);
+    
     
 });
 
@@ -98,6 +107,8 @@ function scrollToSection(target){
             lastScrollPos = $(document).scrollTop();
             autoScrolling = false;
         }, 500);
+        
+  
     }
 }
 
@@ -185,7 +196,13 @@ function placeYouTubeScreen(){
 }
 
 
+/* AVATAR ANIMATION STUFF*/
+currentAnimations = {
+    leftLowerArm: "waving"
+}
 
+
+var leftLowerArm;
 
 var avatar = new Snap('.avatar-content');
 Snap.load('img/jack.svg', function (response) {
@@ -193,8 +210,53 @@ Snap.load('img/jack.svg', function (response) {
    var theMonitor = response.select('#monitor-group');
    theMonitor.click( monitorClickHandler );
    
+   leftLowerArm = bodyPartGenerator(response, '#left-lower-arm', '#left-lower-elbow');
+   
    avatar.append(response);
 });
+
+function bodyPartGenerator(response, bodyPart, rotationPart){
+    var generatedPart = {
+        element: response.select(bodyPart),
+        rotationPointX: response.select(rotationPart).attr("cx"),
+        rotationPointY: response.select(rotationPart).attr("cy")
+    };
+    
+    return generatedPart;
+}
+
+function updateAnimations(){
+    if(currentAnimations.leftLowerArm == "waving") waveLeftArmStart();
+}
+
+function waveLeftArmStart(){
+    if(currentAnimations.leftLowerArm == "waving"){
+        leftLowerArm.element.animate({
+            transform: 'r-20,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
+        }, 300, mina.easeinout(), function(){waveLeftArmBack()});
+    }
+    else{
+        leftLowerArm.element.animate({
+            transform: 'r0,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
+        }, 150, mina.easeinout());
+    }
+}
+
+function waveLeftArmBack(){ 
+    
+    if(currentAnimations.leftLowerArm == "waving"){
+        leftLowerArm.element.animate({
+        transform: 'r20,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
+        }, 300, mina.easeinout(), function(){waveLeftArmStart()});
+    }
+    else{
+        leftLowerArm.element.animate({
+            transform: 'r0,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
+        }, 150, mina.easeinout());
+    }
+}
+
+
 
 
 
@@ -870,12 +932,15 @@ function updateBasedOnScrollPosition(){
 
     /* Could do with refactoring to DRY up*/
     if(windowTop < aboutPoint){
+        
+        currentAnimations.leftLowerArm = "waving";
         var topColour = $('#top').css("background-color");
         $(".title-cap").css("color", topColour);
         $("#lab-background").css("opacity", 0);
         
     }
     else if(windowTop > aboutPoint && windowTop < datesPoint){
+        currentAnimations.leftLowerArm = "";
         var aboutColour = $('#about').css("background-color");
         $(".title-cap").css("color", aboutColour);
         $("#lab-background").css("opacity", 1);
