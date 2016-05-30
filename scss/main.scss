@@ -8,7 +8,6 @@ $header-font: 'Passion One', cursive;
 //####  Mixins  ####
 @mixin section-height-calc{
   
-  //@media (orientation:landscape) { 
 
     /* 99px: the navbar height, -2 pixels because there was an issue with the very end of the last section sometimes being visible*/
     min-height: calc(100vh - 98px);
@@ -470,4 +469,18 @@ h2{
       transition-duration: 0.25s;
       fill: yellow;
     }
+}
+
+.portrait-hidden{
+  
+  @media (orientation:portrait) {
+    display: none;
+  }
+}
+
+.content-area{
+  @media (orientation:portrait) {
+    min-width: 88vw !important;
+    max-width: 88vw !important;
+  }
 }

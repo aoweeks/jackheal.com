@@ -290,4 +290,13 @@ h2 {
   transition-duration: 0.25s;
   fill: yellow; }
 
+@media (orientation: portrait) {
+  .portrait-hidden {
+    display: none; } }
+
+@media (orientation: portrait) {
+  .content-area {
+    min-width: 88vw !important;
+    max-width: 88vw !important; } }
+
 /*# sourceMappingURL=main.css.map */
