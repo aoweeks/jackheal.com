@@ -12,7 +12,7 @@ var contactPoint;
 
 
 var previousShows = {
-    syntheticSheep : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : `<p>The Fringe's first ever comedy lecture on synthetic biology.</p>
+    syntheticSheep : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : `The Fringe's first ever comedy lecture on synthetic biology.</p>
 Supported by the Royal Society of Chemistry, this is a show that answers pressing questions like: What is a spider-goat? Can we create artificial life? And why haven’t we made Jurassic Park yet?`},
     frankensteinsMonster : { "title" : "Frankenstein's Love Monster", "content" : `The story of a zoo-keeper who falls in love with a modern-day Dr. Frankenstein.
 There is something strange going on in the catacombs under the otter cage. Inside these ottercombs, someone is conducting an experiment.
@@ -36,8 +36,17 @@ $('a[href^="#"]').on('click', function(event) {
 
 });
 
-$(window).scroll( function (event) { 
+var lastScrollPos = 0;
+var disableScrollAtStart = true;
+
+$(window).scroll( function (event) {
+    var goingDown;
+    console.log("SCROLLING");
+    
+    goingDown = $(document).scrollTop() > lastScrollPos ? true : false;
+    
     updateBasedOnScrollPosition();
+    if(!autoScrolling) scrollCheckSection(goingDown);
 });
 
 $(window).resize( function (event){
@@ -52,43 +61,16 @@ $(document).ready( function (event){
     getSectionPointInfo();
     updateBasedOnScrollPosition();
     getSectionTops();
+    
+    //kludge to get around buggy behaviour when page is first loading
+    setTimeout(function(){
+        disableScrollAtStart = false;
+    }, 300);
 });
 
 /* SECTION SCROLLING STUFF
 ##########################*/
 
-$(document).keydown( function (event){
-   switch(event.which){
-        
-        case 33: //page up
-            scrollCheckSection(false);
-        break;
-   
-        case 34: //page down
-            scrollCheckSection(true);
-        break;
-       
-       
-        case 38: //up
-            scrollCheckSection();
-        break;
-   
-        case 40: //down
-            scrollCheckSection(true);
-        break;
-        
-        default: return;
-   }
-});
-
-$(document).mousewheel( function(event, delta) {
-   if(delta > 0 ){
-        scrollCheckSection(false);
-   }
-   else{
-       scrollCheckSection(true);
-   }
-});
 
 var scrollTimeOut;
 function scrollCheckSection(goingDown){
@@ -99,13 +81,24 @@ function scrollCheckSection(goingDown){
 }
 
 
-
+var autoScrolling = false;
 
 
 function scrollToSection(target){
+    
+    if(!disableScrollAtStart){
+        
+        autoScrolling = true;
+        
          $('html, body').animate({
             scrollTop: target//101 rather than 100 because of issue where 1 pixel was still sometimes visible
         },500);
+        
+        setTimeout(function(){
+            lastScrollPos = $(document).scrollTop();
+            autoScrolling = false;
+        }, 500);
+    }
 }
 
 function getSectionTops(){
@@ -156,6 +149,9 @@ function checkIfMovedToNewSection(goingDown){
             scrollToSection(bottomSection - $(window).height());
             getSectionTops();
         }
+    }
+    else{
+        lastScrollPos = $(document).scrollTop();
     }
 }
 

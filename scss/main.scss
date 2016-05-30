@@ -1,17 +1,21 @@
-//Variables
+//###  Variables  ###
 $navbar-background: #2F4550;
 $navbar-text: white;
 
 $header-font: 'Passion One', cursive;
 
 
-//Mixins
+//####  Mixins  ####
 @mixin section-height-calc{
-  /* 99px: the navbar height, -2 pixels because there was an issue with the very end of the last section sometimes being visible*/
-  min-height: calc(100vh - 98px);
-  min-height: -o-calc(100vh - 98px); /* opera */
-  min-height: -webkit-calc(100vh - 98px); /* google, safari */
-  min-height: -moz-calc(100vh - 98px); /* firefox */
+  
+  //@media (orientation:landscape) { 
+
+    /* 99px: the navbar height, -2 pixels because there was an issue with the very end of the last section sometimes being visible*/
+    min-height: calc(100vh - 98px);
+    min-height: -o-calc(100vh - 98px); /* opera */
+    min-height: -webkit-calc(100vh - 98px); /* google, safari */
+    min-height: -moz-calc(100vh - 98px); /* firefox */
+ 
 }
 
 @mixin avatar-height-calc{
