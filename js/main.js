@@ -49,7 +49,6 @@ $(window).scroll( function (event) {
     updateAnimations();
     if(!autoScrolling) scrollCheckSection(goingDown);
     
-    if(documentIsReady) updateAnimations();
 });
 
 $(window).resize( function (event){
@@ -108,7 +107,8 @@ function scrollToSection(target){
             autoScrolling = false;
         }, 500);
         
-  
+        
+        updateAnimations();
     }
 }
 
