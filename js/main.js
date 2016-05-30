@@ -11,18 +11,6 @@ var mediaPoint;
 var contactPoint;
 
 
-var previousShows = {
-    syntheticSheep : { "title" : "Do Scientists Dream of Synthetic Sheep?", "content" : `The Fringe's first ever comedy lecture on synthetic biology.</p>
-Supported by the Royal Society of Chemistry, this is a show that answers pressing questions like: What is a spider-goat? Can we create artificial life? And why haven’t we made Jurassic Park yet?`},
-    frankensteinsMonster : { "title" : "Frankenstein's Love Monster", "content" : `The story of a zoo-keeper who falls in love with a modern-day Dr. Frankenstein.
-There is something strange going on in the catacombs under the otter cage. Inside these ottercombs, someone is conducting an experiment.
-Find out just how far one man will go to impress a girl who has a face like Keira Knightley has a face.`},
-    killingMachines : { "title" : "Jack and Nikki: Killing Machines", "content" : `Jack Heal (Chortle Student Comedian 2008) and Nikki Blemings (a girl) request the pleasure of your company at their business seminar on contract killing.
-Bring cash for this once in a lifetime opportunity.
-Goggles optional.`},
-    murderthon : { "title" : "Jack Heal's Murderthon", "content" : `Jack Heal is a man with an axe to grind. A literal axe.
-Join him for his spoken word show, Murderthon: a tale of vengeance, death threats and unexpected sentence endings.`}    
-}
 
 
 $('a[href^="#"]').on('click', function(event) {
@@ -64,6 +52,7 @@ $(document).ready( function (event){
     //kludge to get around buggy behaviour when page is first loading
     setTimeout(function(){
         disableScrollAtStart = false;
+        updateAnimations();
     }, 300);
     
     
@@ -190,11 +179,11 @@ function placeYouTubeScreen(){
 
 /* AVATAR ANIMATION STUFF*/
 currentAnimations = {
-    leftLowerArm: "waving"
+    leftLowerArm: ""
 }
 
 
-var leftLowerArm;
+var leftLowerArm, leftHand;
 
 var avatar = new Snap('.avatar-content');
 Snap.load('img/jack.svg', function (response) {
@@ -203,6 +192,7 @@ Snap.load('img/jack.svg', function (response) {
    theMonitor.click( monitorClickHandler );
    
    leftLowerArm = bodyPartGenerator(response, '#left-lower-arm', '#left-lower-elbow');
+   leftHand = bodyPartGenerator(response, '#left-palm-open', '#left-wrist');
    
    avatar.append(response);
 });
@@ -225,12 +215,20 @@ function waveLeftArmStart(){
     if(currentAnimations.leftLowerArm == "waving"){
         leftLowerArm.element.animate({
             transform: 'r-20,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
-        }, 300, mina.easeinout(), function(){waveLeftArmBack()});
+        }, 300, mina.elastic(), function(){waveLeftArmBack()});
+        
+        leftHand.element.animate({
+            transform: 'r-30,' + leftHand.rotationPointX + "," + leftHand.rotationPointY
+        }, 300, mina.bounce());
     }
     else{
         leftLowerArm.element.animate({
             transform: 'r0,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
-        }, 150, mina.easeinout());
+        }, 150, mina.elastic());
+        
+        leftHand.element.animate({
+            transform: 'r0,' + leftHand.rotationPointX + "," + leftHand.rotationPointY
+        }, 150, mina.bounce());
     }
 }
 
@@ -238,13 +236,21 @@ function waveLeftArmBack(){
     
     if(currentAnimations.leftLowerArm == "waving"){
         leftLowerArm.element.animate({
-        transform: 'r20,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
-        }, 300, mina.easeinout(), function(){waveLeftArmStart()});
+            transform: 'r20,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
+        }, 300, mina.elastic(), function(){waveLeftArmStart()});
+        
+        leftHand.element.animate({
+            transform: 'r10,' + leftHand.rotationPointX + "," + leftHand.rotationPointY
+        }, 300, mina.bounce());
     }
     else{
         leftLowerArm.element.animate({
             transform: 'r0,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
-        }, 150, mina.easeinout());
+        }, 150, mina.elastic());
+        
+        leftHand.element.animate({
+            transform: 'r0,' + leftHand.rotationPointX + "," + leftHand.rotationPointY
+        }, 150, mina.bounce());
     }
 }
 
@@ -298,6 +304,7 @@ function updateBasedOnScrollPosition(){
 
     /* Could do with refactoring to DRY up*/
     if(windowTop < aboutPoint){
+        
         
         currentAnimations.leftLowerArm = "waving";
         var topColour = $('#top').css("background-color");
