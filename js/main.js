@@ -52,6 +52,7 @@ $(document).ready( function (event){
     //kludge to get around buggy behaviour when page is first loading
     setTimeout(function(){
         disableScrollAtStart = false;
+        newAnimation = "waving";
         updateAnimations();
     }, 300);
     
@@ -181,12 +182,8 @@ function placeYouTubeScreen(){
 lastAnimation = "";
 newAnimation = "";
 
-currentAnimations = {
-    leftLowerArm: ""
-}
 
-
-var leftLowerArm, leftHand;
+var leftArm, leftLowerArm, leftHand;
 
 var avatar = new Snap('.avatar-content');
 Snap.load('img/jack.svg', function (response) {
@@ -194,6 +191,7 @@ Snap.load('img/jack.svg', function (response) {
    var theMonitor = response.select('#monitor-group');
    theMonitor.click( monitorClickHandler );
    
+   leftArm = bodyPartGenerator(response, '#left-arm', '#left-shoulder');
    leftLowerArm = bodyPartGenerator(response, '#left-lower-arm', '#left-lower-elbow');
    leftHand = bodyPartGenerator(response, '#left-palm-open', '#left-wrist');
    
@@ -211,13 +209,29 @@ function bodyPartGenerator(response, bodyPart, rotationPart){
 }
 
 function updateAnimations(){
+    
+    console.log("Firing");
     if(lastAnimation != newAnimation){
+        switch(newAnimation) {
+            case "waving":
+                waveLeftArmStart();
+                break;
+            default:
+                break;
+                
+        }
         
+        lastAnimation = newAnimation;
     }
 }
 
 function waveLeftArmStart(){
-    if(currentAnimations.leftLowerArm == "waving"){
+    if(newAnimation == "waving"){
+        
+        leftArm.element.animate({
+            transform: 'r-10,' + leftArm.rotationPointX + "," + leftArm.rotationPointY
+        }, 350, mina.elastic(), function(){waveLeftArmBack()});
+        
         leftLowerArm.element.animate({
             transform: 'r-10,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
         }, 350, mina.elastic(), function(){waveLeftArmBack()});
@@ -239,7 +253,7 @@ function waveLeftArmStart(){
 
 function waveLeftArmBack(){ 
     
-    if(currentAnimations.leftLowerArm == "waving"){
+    if(newAnimation == "waving"){
         leftLowerArm.element.animate({
             transform: 'r20,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
         }, 350, mina.elastic(), function(){waveLeftArmStart()});
@@ -311,19 +325,22 @@ function updateBasedOnScrollPosition(){
     if(windowTop < aboutPoint){
         
         
-        currentAnimations.leftLowerArm = "waving";
+        newAnimation = "waving";
         var topColour = $('#top').css("background-color");
         $(".title-cap").css("color", topColour);
         $("#lab-background").css("opacity", 0);
+        updateAnimations();
         
     }
     else if(windowTop > aboutPoint && windowTop < datesPoint){
-        currentAnimations.leftLowerArm = "";
+        newAnimation = "";
         var aboutColour = $('#about').css("background-color");
         $(".title-cap").css("color", aboutColour);
         $("#lab-background").css("opacity", 1);
         $("#comedy-club-background").css("opacity", 0);
         $("#comedy-club-foreground").css("opacity", 0);
+        updateAnimations();
+        
     }
     else if(windowTop > datesPoint && windowTop < mediaPoint){
         var datesColour = $('#dates').css("background-color");
@@ -333,6 +350,7 @@ function updateBasedOnScrollPosition(){
         $("#comedy-club-foreground").css("opacity", 1);
         $('#media-background').css("opacity", 0);
         $("#contact-background").css("opacity", 0);
+        updateAnimations();
         
     }
     else if(windowTop > mediaPoint && windowTop < contactPoint){
@@ -342,6 +360,7 @@ function updateBasedOnScrollPosition(){
         $("#comedy-club-foreground").css("opacity", 0);
         $('#media-background').css("opacity", 1);
         $("#contact-background").css("opacity", 0);
+        updateAnimations();
         
     }
     
@@ -352,6 +371,7 @@ function updateBasedOnScrollPosition(){
         $("#comedy-club-foreground").css("opacity", 0);
         $('#media-background').css("opacity", 0);
         $("#contact-background").css("opacity", 1);
+        updateAnimations();
     }
     
 }
