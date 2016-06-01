@@ -229,8 +229,8 @@ function waveLeftArmStart(){
     if(newAnimation == "waving"){
         
         leftArm.element.animate({
-            transform: 'r-10,' + leftArm.rotationPointX + "," + leftArm.rotationPointY
-        }, 350, mina.elastic(), function(){waveLeftArmBack()});
+            transform: 'r-2,' + leftArm.rotationPointX + "," + leftArm.rotationPointY
+        }, 350, mina.elastic());
         
         leftLowerArm.element.animate({
             transform: 'r-10,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
@@ -254,6 +254,13 @@ function waveLeftArmStart(){
 function waveLeftArmBack(){ 
     
     if(newAnimation == "waving"){
+        
+        
+        leftArm.element.animate({
+            transform: 'r4,' + leftArm.rotationPointX + "," + leftArm.rotationPointY
+        }, 350, mina.elastic());
+        
+        
         leftLowerArm.element.animate({
             transform: 'r20,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
         }, 350, mina.elastic(), function(){waveLeftArmStart()});
