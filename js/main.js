@@ -178,6 +178,9 @@ function placeYouTubeScreen(){
 
 
 /* AVATAR ANIMATION STUFF*/
+lastAnimation = "";
+newAnimation = "";
+
 currentAnimations = {
     leftLowerArm: ""
 }
@@ -208,27 +211,29 @@ function bodyPartGenerator(response, bodyPart, rotationPart){
 }
 
 function updateAnimations(){
-    if(currentAnimations.leftLowerArm == "waving") waveLeftArmStart();
+    if(lastAnimation != newAnimation){
+        
+    }
 }
 
 function waveLeftArmStart(){
     if(currentAnimations.leftLowerArm == "waving"){
         leftLowerArm.element.animate({
-            transform: 'r-20,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
-        }, 300, mina.elastic(), function(){waveLeftArmBack()});
+            transform: 'r-10,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
+        }, 350, mina.elastic(), function(){waveLeftArmBack()});
         
         leftHand.element.animate({
             transform: 'r-30,' + leftHand.rotationPointX + "," + leftHand.rotationPointY
-        }, 300, mina.bounce());
+        }, 350, mina.bounce());
     }
     else{
         leftLowerArm.element.animate({
             transform: 'r0,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
-        }, 150, mina.elastic());
+        }, 175, mina.elastic());
         
         leftHand.element.animate({
             transform: 'r0,' + leftHand.rotationPointX + "," + leftHand.rotationPointY
-        }, 150, mina.bounce());
+        }, 175, mina.bounce());
     }
 }
 
@@ -237,20 +242,20 @@ function waveLeftArmBack(){
     if(currentAnimations.leftLowerArm == "waving"){
         leftLowerArm.element.animate({
             transform: 'r20,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
-        }, 300, mina.elastic(), function(){waveLeftArmStart()});
+        }, 350, mina.elastic(), function(){waveLeftArmStart()});
         
         leftHand.element.animate({
             transform: 'r10,' + leftHand.rotationPointX + "," + leftHand.rotationPointY
-        }, 300, mina.bounce());
+        }, 350, mina.bounce());
     }
     else{
         leftLowerArm.element.animate({
             transform: 'r0,' + leftLowerArm.rotationPointX + "," + leftLowerArm.rotationPointY
-        }, 150, mina.elastic());
+        }, 175, mina.elastic());
         
         leftHand.element.animate({
             transform: 'r0,' + leftHand.rotationPointX + "," + leftHand.rotationPointY
-        }, 150, mina.bounce());
+        }, 175, mina.bounce());
     }
 }
 
