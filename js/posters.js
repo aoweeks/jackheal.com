@@ -70,6 +70,7 @@ function killingMachinesPosterClickHandler(){
 }
 
 function frankensteinsMonsterPosterClickHandler(){
+    $('#caricature-area').addClass('frankenstein');
     $('#past-show-title').html(previousShows['frankensteinsMonster'].title);
     $('#past-show-description').html(previousShows['frankensteinsMonster'].content);
     frankensteinsMonsterModeActivate();

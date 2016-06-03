@@ -147,25 +147,32 @@ blockquote{
       }
       
   }
-  
+}
+
+
+.frankenstein{
   /*Skin colours: any ID ending with "skin". Instead of using class,
-   as Illustrator strips classes every time it's needed to make an edit*/
+  as Illustrator strips classes every time it's needed to make an edit*/
   [id$="skin"]{
+    
+    transition-duration: 0.25s;
     fill: #8AA24C;
   }
   
   /*Skin shadow tones: any ID ending with "skin-shadow"*/
   [id$="skin-shadow"]{
+    
+    transition-duration: 0.25s;
     fill: darkgreen;
   }
   
   /*Skin shadow tones: any ID ending with "skin-shadow"*/
   [id$="hair"]{
+    
+    transition-duration: 0.25s;
     fill: darkgreen;
   }
 }
-
-
 
 
 p{
