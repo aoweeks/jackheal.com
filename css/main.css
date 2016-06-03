@@ -50,7 +50,11 @@ blockquote {
   top: calc(50% + 50px);
   transform: translateY(-50%);
   text-align: center;
-  padding: none; }
+  padding: none;
+  /*Skin colours: any ID ending with "skin". Instead of using class,
+   as Illustrator strips classes every time it's needed to make an edit*/
+  /*Skin shadow tones: any ID ending with "skin-shadow"*/
+  /*Skin shadow tones: any ID ending with "skin-shadow"*/ }
   .avatar-container .avatar-content {
     height: calc(100vh - 100px);
     height: -o-calc(100vh - 100px);
@@ -74,6 +78,12 @@ blockquote {
     @media only screen and (min-width: 1200px) {
       .avatar-container .avatar-content {
         width: 30vw; } }
+  .avatar-container [id$="skin"] {
+    fill: #8AA24C; }
+  .avatar-container [id$="skin-shadow"] {
+    fill: darkgreen; }
+  .avatar-container [id$="hair"] {
+    fill: darkgreen; }
 
 p {
   font-size: 3em; }

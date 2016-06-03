@@ -56,6 +56,7 @@ Snap.load('img/poster-stand.svg', function (response) {
 function syntheticSheepPosterClickHandler(){
     $('#past-show-title').html(previousShows['syntheticSheep'].title);
     $('#past-show-description').html(previousShows['syntheticSheep'].content);
+    syntheticSheepModeActivate();
 }
 
 function murderthonPosterClickHandler(){
@@ -71,6 +72,7 @@ function killingMachinesPosterClickHandler(){
 function frankensteinsMonsterPosterClickHandler(){
     $('#past-show-title').html(previousShows['frankensteinsMonster'].title);
     $('#past-show-description').html(previousShows['frankensteinsMonster'].content);
+    frankensteinsMonsterModeActivate();
 }
 
 var whichPoster = 0;
@@ -119,4 +121,17 @@ function movePostersDown(){
     posterMask.animate({ transform: moveDownMatrix}, 3000 );
     posters.animate({ transform: moveUpMatrix}, 3000 );
     setTimeout(movePosters, 3000);
+}
+
+
+
+/* MODES */
+
+function syntheticSheepModeActivate(){
+    
+}
+
+function frankensteinsMonsterModeActivate(){
+    
+    //$("#face").css("fill", "lightgreen");    
 }

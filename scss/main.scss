@@ -147,6 +147,22 @@ blockquote{
       }
       
   }
+  
+  /*Skin colours: any ID ending with "skin". Instead of using class,
+   as Illustrator strips classes every time it's needed to make an edit*/
+  [id$="skin"]{
+    fill: #8AA24C;
+  }
+  
+  /*Skin shadow tones: any ID ending with "skin-shadow"*/
+  [id$="skin-shadow"]{
+    fill: darkgreen;
+  }
+  
+  /*Skin shadow tones: any ID ending with "skin-shadow"*/
+  [id$="hair"]{
+    fill: darkgreen;
+  }
 }
 
 

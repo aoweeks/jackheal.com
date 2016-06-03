@@ -30,7 +30,7 @@ var disableScrollAtStart = true;
 $(window).scroll( function (event) {
     var goingDown;
     
-    goingDown = $(document).scrollTop() > lastScrollPos ? true : false;
+    goingDown = $(document).scrollTop() >= lastScrollPos ? true : false;
     
     updateBasedOnScrollPosition();
     if(!autoScrolling) scrollCheckSection(goingDown);
@@ -116,7 +116,6 @@ function checkIfMovedToNewSection(goingDown){
     var windowTop = $(document).scrollTop() + 99;
     var windowBottom = $(document).scrollTop() + $(window).height();
     
-    
     var topSection;
     var bottomSection;
     
@@ -193,7 +192,7 @@ Snap.load('img/jack.svg', function (response) {
    
    leftArm = bodyPartGenerator(response, '#left-arm', '#left-shoulder');
    leftLowerArm = bodyPartGenerator(response, '#left-lower-arm', '#left-lower-elbow');
-   leftHand = bodyPartGenerator(response, '#left-palm-open', '#left-wrist');
+   leftHand = bodyPartGenerator(response, '#left-palm-open-skin', '#left-wrist');
    
    avatar.append(response);
 });
