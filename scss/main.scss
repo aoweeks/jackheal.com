@@ -281,6 +281,15 @@ h2{
   background-color: #FFBB53;
 }
 
+.panel-heading-jh{
+  background-color: $navbar-background;
+  color: white;
+}
+
+.panel-body-jh{
+  padding: 1em;  
+}
+
 #past-show-description p{
   font-size: 1.25em;
 }

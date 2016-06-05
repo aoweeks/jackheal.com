@@ -162,6 +162,13 @@ h2 {
 #dates, #past-shows {
   background-color: #FFBB53; }
 
+.panel-heading-jh {
+  background-color: #2F4550;
+  color: white; }
+
+.panel-body-jh {
+  padding: 1em; }
+
 #past-show-description p {
   font-size: 1.25em; }
 
