@@ -70,7 +70,6 @@ function killingMachinesPosterClickHandler(){
 }
 
 function frankensteinsMonsterPosterClickHandler(){
-    $('#caricature-area').addClass('frankenstein');
     $('#past-show-title').html(previousShows['frankensteinsMonster'].title);
     $('#past-show-description').html(previousShows['frankensteinsMonster'].content);
     frankensteinsMonsterModeActivate();
@@ -134,5 +133,13 @@ function syntheticSheepModeActivate(){
 
 function frankensteinsMonsterModeActivate(){
     
-    //$("#face").css("fill", "lightgreen");    
+    $('#caricature-area').addClass('frankenstein');
+    var headGrowMatrix = new Snap.Matrix();
+    
+    headGrowMatrix.scale(1.02, 1.18);
+    //hair.animate({ transform: headGrowMatrix}, 250);
+}
+
+function frankensteinsMonsterModeDeactive(){
+    
 }

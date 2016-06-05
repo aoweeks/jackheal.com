@@ -182,7 +182,7 @@ lastAnimation = "";
 newAnimation = "";
 
 
-var leftArm, leftLowerArm, leftHand;
+var leftArm, leftLowerArm, leftHand, hair;
 
 var avatar = new Snap('.avatar-content');
 Snap.load('img/jack.svg', function (response) {
@@ -193,6 +193,8 @@ Snap.load('img/jack.svg', function (response) {
    leftArm = bodyPartGenerator(response, '#left-arm', '#left-shoulder');
    leftLowerArm = bodyPartGenerator(response, '#left-lower-arm', '#left-lower-elbow');
    leftHand = bodyPartGenerator(response, '#left-palm-open-skin', '#left-wrist');
+   
+   hair = response.select('#hair');
    
    avatar.append(response);
 });
@@ -209,7 +211,6 @@ function bodyPartGenerator(response, bodyPart, rotationPart){
 
 function updateAnimations(){
     
-    console.log("Firing");
     if(lastAnimation != newAnimation){
         switch(newAnimation) {
             case "waving":
