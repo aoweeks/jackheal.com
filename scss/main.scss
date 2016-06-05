@@ -270,7 +270,7 @@ h2{
     font-size: 0.75em;  
     footer{
       color: white;
-      font-size: 1.25em;
+      font-size: 1.5em;
     }
   }
     
@@ -279,6 +279,10 @@ h2{
 
 #dates, #past-shows{
   background-color: #FFBB53;
+}
+
+#past-show-description p{
+  font-size: 1.25em;
 }
 
 #media, #video, #articles{
