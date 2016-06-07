@@ -77,9 +77,13 @@ var autoScrolling = false;
 
 function scrollToSection(target){
     
+    
     if(!disableScrollAtStart){
         
         autoScrolling = true;
+        
+        
+        console.log("scrollToSection Firing. Target: " + target);
         
          $('html, body').animate({
             scrollTop: target//101 rather than 100 because of issue where 1 pixel was still sometimes visible
@@ -128,6 +132,8 @@ function checkIfMovedToNewSection(goingDown){
     if(windowTop < 100) return;
     if(windowBottom > $("#footer").offset().top) return;
     
+    
+    console.log("checkIfMovedToNewSection Firing. windowTop: " + windowTop + ", topSection: " + topSection, + ", bottomSection: " + bottomSection);
     
     
     //If the window has moved into a new section
