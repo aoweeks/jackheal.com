@@ -37,7 +37,6 @@ $(window).scroll( function (event) {
 });
 
 $(window).resize( function (event){
-    
     getSectionPointInfo();
     placeYouTubeScreen();
     getSectionTops();
@@ -48,6 +47,10 @@ $(document).ready( function (event){
     getSectionPointInfo();
     updateBasedOnScrollPosition();
     getSectionTops();
+    
+    
+    lastScrollPos = $(document).scrollTop();
+    console.log(lastScrollPos);
     
     //kludge to get around buggy behaviour when page is first loading
     setTimeout(function(){
@@ -83,7 +86,7 @@ function scrollToSection(target){
         autoScrolling = true;
         
         
-        console.log("scrollToSection Firing. Target: " + target);
+        console.log("scrollToSection Firing. Target: " + target + " (lastScrollPos = " + lastScrollPos + ")");
         
          $('html, body').animate({
             scrollTop: target//101 rather than 100 because of issue where 1 pixel was still sometimes visible
@@ -133,7 +136,7 @@ function checkIfMovedToNewSection(goingDown){
     if(windowBottom > $("#footer").offset().top) return;
     
     
-    console.log("checkIfMovedToNewSection Firing. windowTop: " + windowTop + ", topSection: " + topSection, + ", bottomSection: " + bottomSection);
+    console.log("checkIfMovedToNewSection Firing. windowTop: " + windowTop + ", topSection: " + topSection + ", bottomSection: " + bottomSection);
     
     
     //If the window has moved into a new section
