@@ -324,4 +324,7 @@ h2 {
     min-width: 88vw !important;
     max-width: 88vw !important; } }
 
+.closed-eyes #open-eyes {
+  opacity: 0; }
+
 /*# sourceMappingURL=main.css.map */

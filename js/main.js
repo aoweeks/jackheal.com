@@ -10,7 +10,7 @@ var datesPoint;
 var mediaPoint;
 var contactPoint;
 
-
+var everythingIsReady = false;
 
 
 $('a[href^="#"]').on('click', function(event) {
@@ -44,10 +44,11 @@ $(window).resize( function (event){
 
 
 $(document).ready( function (event){
+    
     getSectionPointInfo();
     updateBasedOnScrollPosition();
     getSectionTops();
-    
+    /*
     
     lastScrollPos = $(document).scrollTop();
     console.log(lastScrollPos);
@@ -58,6 +59,9 @@ $(document).ready( function (event){
         newAnimation = "waving";
         updateAnimations();
     }, 300);
+    */
+    console.log("here");
+    setTimeout(blink, 900);
     
     
 });
@@ -164,6 +168,25 @@ function checkIfMovedToNewSection(goingDown){
 /* END SECTION SCROLLING STUFF
 #############################*/
 
+function blink(){    
+    $('#jack-caricature').addClass('closed-eyes');
+    console.log("blink");
+    setTimeout(unblink, 130);
+}
+
+function unblink(){
+    $('#jack-caricature').removeClass('closed-eyes');
+    console.log("unblink");
+    setTimeout(blink, randomBlinkInterval());
+}
+
+function randomBlinkInterval(){
+    var blinkInterval = Math.random() * (10000 - 2000) + 2000;
+    
+   
+    return blinkInterval;
+}
+
 
 
 
@@ -206,6 +229,8 @@ Snap.load('img/jack.svg', function (response) {
    hair = response.select('#hair');
    
    avatar.append(response);
+   
+    everythingIsReady = true;
 });
 
 function bodyPartGenerator(response, bodyPart, rotationPart){
@@ -223,7 +248,7 @@ function updateAnimations(){
     if(lastAnimation != newAnimation){
         switch(newAnimation) {
             case "waving":
-                waveLeftArmStart();
+                if(everythingIsReady)waveLeftArmStart();
                 break;
             default:
                 break;
@@ -236,7 +261,6 @@ function updateAnimations(){
 
 function waveLeftArmStart(){
     if(newAnimation == "waving"){
-        
         leftArm.element.animate({
             transform: 'r-2,' + leftArm.rotationPointX + "," + leftArm.rotationPointY
         }, 350, mina.elastic());
