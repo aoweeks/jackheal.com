@@ -156,21 +156,21 @@ blockquote{
   [id$="skin"]{
     
     transition-duration: 0.25s;
-    fill: #8AA24C;
+    fill: #C9E69A;
   }
   
   /*Skin shadow tones: any ID ending with "skin-shadow"*/
   [id$="skin-shadow"]{
     
     transition-duration: 0.25s;
-    fill: darkgreen;
+    fill: #6F9053;
   }
   
   /*Skin shadow tones: any ID ending with "skin-shadow"*/
   [id$="hair"]{
     
     transition-duration: 0.25s;
-    fill: darkgreen;
+    fill: #6F9053;
   }
 }
 
@@ -522,5 +522,5 @@ h2{
 }
 
 .closed-eyes #open-eyes{
-  opacity: 0;
+  display: none;
 }

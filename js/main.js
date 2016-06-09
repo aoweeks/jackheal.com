@@ -48,7 +48,7 @@ $(document).ready( function (event){
     getSectionPointInfo();
     updateBasedOnScrollPosition();
     getSectionTops();
-    /*
+    
     
     lastScrollPos = $(document).scrollTop();
     console.log(lastScrollPos);
@@ -59,7 +59,7 @@ $(document).ready( function (event){
         newAnimation = "waving";
         updateAnimations();
     }, 300);
-    */
+ 
     console.log("here");
     setTimeout(blink, 900);
     
@@ -170,20 +170,16 @@ function checkIfMovedToNewSection(goingDown){
 
 function blink(){    
     $('#jack-caricature').addClass('closed-eyes');
-    console.log("blink");
     setTimeout(unblink, 130);
 }
 
 function unblink(){
     $('#jack-caricature').removeClass('closed-eyes');
-    console.log("unblink");
     setTimeout(blink, randomBlinkInterval());
 }
 
 function randomBlinkInterval(){
     var blinkInterval = Math.random() * (10000 - 2000) + 2000;
-    
-   
     return blinkInterval;
 }
 

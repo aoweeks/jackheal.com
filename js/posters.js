@@ -1,4 +1,6 @@
 
+var posterMode = "";
+
 
 var previousShows = {
     syntheticSheep : { "title" : "Do Scientists Dream of Synthetic Sheep?",
@@ -54,22 +56,26 @@ Snap.load('img/poster-stand.svg', function (response) {
 });
 
 function syntheticSheepPosterClickHandler(){
+    posterModeeDeactive(posterMode);
     $('#past-show-title').html(previousShows['syntheticSheep'].title);
     $('#past-show-description').html(previousShows['syntheticSheep'].content);
     syntheticSheepModeActivate();
 }
 
 function murderthonPosterClickHandler(){
+    posterModeeDeactive(posterMode);
     $('#past-show-title').html(previousShows['murderthon'].title);
     $('#past-show-description').html(previousShows['murderthon'].content);
 }
 
 function killingMachinesPosterClickHandler(){
+    posterModeeDeactive(posterMode);
     $('#past-show-title').html(previousShows['killingMachines'].title);
     $('#past-show-description').html(previousShows['killingMachines'].content);
 }
 
 function frankensteinsMonsterPosterClickHandler(){
+    posterModeeDeactive(posterMode);
     $('#past-show-title').html(previousShows['frankensteinsMonster'].title);
     $('#past-show-description').html(previousShows['frankensteinsMonster'].content);
     frankensteinsMonsterModeActivate();
@@ -133,6 +139,7 @@ function syntheticSheepModeActivate(){
 
 function frankensteinsMonsterModeActivate(){
     
+    posterMode = "frankenstein";
     $('#caricature-area').addClass('frankenstein');
     var headGrowMatrix = new Snap.Matrix();
     
@@ -140,6 +147,8 @@ function frankensteinsMonsterModeActivate(){
     //hair.animate({ transform: headGrowMatrix}, 250);
 }
 
-function frankensteinsMonsterModeDeactive(){
-    
+function posterModeeDeactive(whichPosterMode){
+    if(whichPosterMode == "frankenstein"){
+        $('#caricature-area').removeClass('frankenstein');
+    }
 }
