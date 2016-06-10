@@ -212,11 +212,16 @@ newAnimation = "";
 
 var leftArm, leftLowerArm, leftHand, hair;
 
+
+
 var avatar = new Snap('.avatar-content');
 Snap.load('img/jack.svg', function (response) {
    
    var theMonitor = response.select('#monitor-group');
    theMonitor.click( monitorClickHandler );
+   
+   
+   avatar.hover( avatarMouseHover, avatarMouseLeave);
    
    leftArm = bodyPartGenerator(response, '#left-arm', '#left-shoulder');
    leftLowerArm = bodyPartGenerator(response, '#left-lower-arm', '#left-lower-elbow');
@@ -237,6 +242,14 @@ function bodyPartGenerator(response, bodyPart, rotationPart){
     };
     
     return generatedPart;
+}
+
+function avatarMouseHover(){
+    console.log("ENTERED");
+}
+
+function avatarMouseLeave(){
+    console.log("LEFT");
 }
 
 function updateAnimations(){
