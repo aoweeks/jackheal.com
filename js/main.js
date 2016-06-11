@@ -60,7 +60,6 @@ $(document).ready( function (event){
         updateAnimations();
     }, 300);
  
-    console.log("here");
     setTimeout(blink, 900);
     
     
@@ -231,7 +230,7 @@ Snap.load('img/jack.svg', function (response) {
    
    avatar.append(response);
    
-    everythingIsReady = true;
+   everythingIsReady = true;
 });
 
 function bodyPartGenerator(response, bodyPart, rotationPart){
@@ -246,6 +245,7 @@ function bodyPartGenerator(response, bodyPart, rotationPart){
 
 function avatarMouseHover(){
     console.log("ENTERED");
+
 }
 
 function avatarMouseLeave(){
