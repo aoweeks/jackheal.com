@@ -424,5 +424,13 @@ function updateBasedOnScrollPosition(){
     }
     
 }
+
+
+function coordinateTransform(screenPoint, someSvgObject)
+{
+  var CTM = someSvgObject.getScreenCTM();
+  return screenPoint.matrixTransform( CTM.inverse() );
+}
+
 /* DEBUGGING FUNCTIONS
 ########################*/
