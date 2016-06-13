@@ -365,15 +365,11 @@ function getSectionPointInfo(){
 }
 
 function updateBasedOnScrollPosition(){
-    
-  
-    
+   
     var windowTop = $(document).scrollTop();
 
     /* Could do with refactoring to DRY up*/
     if(windowTop < aboutPoint){
-        
-        
         newAnimation = "waving";
         var topColour = $('#top').css("background-color");
         $(".title-cap").css("color", topColour);

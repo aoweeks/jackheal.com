@@ -56,26 +56,26 @@ Snap.load('img/poster-stand.svg', function (response) {
 });
 
 function syntheticSheepPosterClickHandler(){
-    posterModeeDeactive(posterMode);
+    posterModeDeactive(posterMode);
     $('#past-show-title').html(previousShows['syntheticSheep'].title);
     $('#past-show-description').html(previousShows['syntheticSheep'].content);
     syntheticSheepModeActivate();
 }
 
 function murderthonPosterClickHandler(){
-    posterModeeDeactive(posterMode);
+    posterModeDeactive(posterMode);
     $('#past-show-title').html(previousShows['murderthon'].title);
     $('#past-show-description').html(previousShows['murderthon'].content);
 }
 
 function killingMachinesPosterClickHandler(){
-    posterModeeDeactive(posterMode);
+    posterModeDeactive(posterMode);
     $('#past-show-title').html(previousShows['killingMachines'].title);
     $('#past-show-description').html(previousShows['killingMachines'].content);
 }
 
 function frankensteinsMonsterPosterClickHandler(){
-    posterModeeDeactive(posterMode);
+    posterModeDeactive(posterMode);
     $('#past-show-title').html(previousShows['frankensteinsMonster'].title);
     $('#past-show-description').html(previousShows['frankensteinsMonster'].content);
     frankensteinsMonsterModeActivate();
@@ -147,7 +147,7 @@ function frankensteinsMonsterModeActivate(){
     //hair.animate({ transform: headGrowMatrix}, 250);
 }
 
-function posterModeeDeactive(whichPosterMode){
+function posterModeDeactive(whichPosterMode){
     if(whichPosterMode == "frankenstein"){
         $('#caricature-area').removeClass('frankenstein');
     }
