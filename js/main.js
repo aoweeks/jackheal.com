@@ -220,7 +220,7 @@ Snap.load('img/jack.svg', function (response) {
    theMonitor.click( monitorClickHandler );
    
    
-   avatar.hover( avatarMouseHover, avatarMouseLeave);
+   avatar.avatarMouseMove( avatarMouseMove );
    
    leftArm = bodyPartGenerator(response, '#left-arm', '#left-shoulder');
    leftLowerArm = bodyPartGenerator(response, '#left-lower-arm', '#left-lower-elbow');
@@ -243,13 +243,8 @@ function bodyPartGenerator(response, bodyPart, rotationPart){
     return generatedPart;
 }
 
-function avatarMouseHover(){
-    console.log("ENTERED");
-
-}
-
-function avatarMouseLeave(){
-    console.log("LEFT");
+function avatarMouseMove( ev, x, y){
+    console.log(x + " + " + y);
 }
 
 function updateAnimations(){
