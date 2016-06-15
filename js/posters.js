@@ -144,7 +144,7 @@ function frankensteinsMonsterModeActivate(){
     var headGrowMatrix = new Snap.Matrix();
     
     headGrowMatrix.scale(1.02, 1.18);
-    //hair.animate({ transform: headGrowMatrix}, 250);
+    hair.animate({ transform: headGrowMatrix}, 250);
 }
 
 function posterModeDeactive(whichPosterMode){

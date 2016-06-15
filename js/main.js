@@ -210,23 +210,27 @@ newAnimation = "";
 
 
 var leftArm, leftLowerArm, leftHand, hair;
-
+var eyeCenterPoint;
 
 
 var avatar = new Snap('.avatar-content');
+
+var c1 = avatar.circle(0,0,100).attr({ fill: "red" });
 Snap.load('img/jack.svg', function (response) {
    
    var theMonitor = response.select('#monitor-group');
    theMonitor.click( monitorClickHandler );
    
    
-   avatar.avatarMouseMove( avatarMouseMove );
+   avatar.mousemove( avatarMouseMove );
    
    leftArm = bodyPartGenerator(response, '#left-arm', '#left-shoulder');
    leftLowerArm = bodyPartGenerator(response, '#left-lower-arm', '#left-lower-elbow');
    leftHand = bodyPartGenerator(response, '#left-palm-open-skin', '#left-wrist');
    
    hair = response.select('#hair');
+   
+   eyeCenterPoint = response.select('#eye-center-point');
    
    avatar.append(response);
    
@@ -244,7 +248,17 @@ function bodyPartGenerator(response, bodyPart, rotationPart){
 }
 
 function avatarMouseMove( ev, x, y){
-    console.log(x + " + " + y);
+    
+    var pnt = avatar.paper.node.createSVGPoint();
+    pnt.x = x;
+    pnt.y = y;
+    
+    var localPnt = pnt.matrixTransform( avatar.paper.node.getScreenCTM().inverse() );
+    c1.attr({ cx: localPnt.x , cy: localPnt.y });
+    if(c1.attr("cx") > 100){
+        console.log( c1.attr("cx") );
+    }
+    
 }
 
 function updateAnimations(){
