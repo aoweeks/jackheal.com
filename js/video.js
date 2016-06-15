@@ -6,6 +6,24 @@
 
 var player;
 
+function placeYouTubeScreen(){
+    
+    //Kludge to get around embedding iframe in SVG problems with IE
+    
+    var screen = document.getElementById('youtube-screen-off');
+    var screenHeight = screen.getBoundingClientRect().height;
+    var screenWidth = screen.getBoundingClientRect().width;
+    var screenLeft = $('#youtube-screen-off').position().left;
+    var screenTop = $('#youtube-screen-off').position().top;
+    
+    
+    $('#youtube-screen-on').css('left', screenLeft);
+    $('#youtube-screen-on').css('top', screenTop);
+    $('#youtube-screen-on').css('height', screenHeight);
+    $('#youtube-screen-on').css('width', screenWidth);
+    
+}
+
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-screen-on', {
         videoId: 'ajhgAqEnT38',

@@ -184,26 +184,6 @@ function randomBlinkInterval(){
 
 
 
-
-function placeYouTubeScreen(){
-    
-    //Kludge to get around embedding iframe in SVG problems with IE
-    
-    var screen = document.getElementById('youtube-screen-off');
-    var screenHeight = screen.getBoundingClientRect().height;
-    var screenWidth = screen.getBoundingClientRect().width;
-    var screenLeft = $('#youtube-screen-off').position().left;
-    var screenTop = $('#youtube-screen-off').position().top;
-    
-    
-    $('#youtube-screen-on').css('left', screenLeft);
-    $('#youtube-screen-on').css('top', screenTop);
-    $('#youtube-screen-on').css('height', screenHeight);
-    $('#youtube-screen-on').css('width', screenWidth);
-    
-}
-
-
 /* AVATAR ANIMATION STUFF*/
 lastAnimation = "";
 newAnimation = "";
@@ -223,6 +203,9 @@ Snap.load('img/jack.svg', function (response) {
    
    
    avatar.mousemove( avatarMouseMove );
+   
+   //No enter function, just leave
+   avatar.hover( null, avatarMouseLeave);
    
    leftArm = bodyPartGenerator(response, '#left-arm', '#left-shoulder');
    leftLowerArm = bodyPartGenerator(response, '#left-lower-arm', '#left-lower-elbow');
@@ -252,13 +235,30 @@ function avatarMouseMove( ev, x, y){
     var pnt = avatar.paper.node.createSVGPoint();
     pnt.x = x;
     pnt.y = y;
-    
     var localPnt = pnt.matrixTransform( avatar.paper.node.getScreenCTM().inverse() );
+    
     c1.attr({ cx: localPnt.x , cy: localPnt.y });
-    if( c1.attr("cx") > eyeCenterPoint.attr("cx") ){
-        console.log( eyeCenterPoint.attr("cx") );
+    
+    
+    var eyePnt = avatar.paper.node.createSVGPoint();
+    eyePnt.x = eyeCenterPoint.attr("cx");
+    eyePnt.y = eyeCenterPoint.attr("cy");
+    var localEyePnt = eyePnt.matrixTransform( avatar.paper.node.getScreenCTM().inverse() );
+    
+    console.log(localPnt.x);
+    if( localPnt.x > (localEyePnt.x + 980.889) ){
+        console.log( localEyePnt.x + 980.889 );
+        console.log("above");
+    }
+    else{
+        
+        console.log("below");
     }
     
+}
+
+function avatarMouseLeave(){
+    console.log("left");
 }
 
 function updateAnimations(){
