@@ -215,7 +215,7 @@ var eyeCenterPoint;
 
 var avatar = new Snap('.avatar-content');
 
-var c1 = avatar.circle(0,0,100).attr({ fill: "red" });
+var c1 = avatar.circle(0,0,3).attr({ fill: "red" });
 Snap.load('img/jack.svg', function (response) {
    
    var theMonitor = response.select('#monitor-group');

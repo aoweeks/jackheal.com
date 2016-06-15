@@ -146,7 +146,7 @@ function frankensteinsMonsterModeActivate(){
     
     var pnt = avatar.paper.node.createSVGPoint();
     pnt.x = hair.getBBox().x + (hair.getBBox().width / 2);
-    pnt.y = hair.getBBox().y + (hair.getBBox().height / 1.25);
+    pnt.y = hair.getBBox().y + (hair.getBBox().height / 1.2);
     
     headGrowMatrix.scale(1.02, 1.18, pnt.x, pnt.y);
     hair.animate({ transform: headGrowMatrix}, 250);
@@ -155,5 +155,15 @@ function frankensteinsMonsterModeActivate(){
 function posterModeDeactive(whichPosterMode){
     if(whichPosterMode == "frankenstein"){
         $('#caricature-area').removeClass('frankenstein');
+        
+        var headShrinkMatrix = new Snap.Matrix();
+        
+        
+        var pnt = avatar.paper.node.createSVGPoint();
+        pnt.x = hair.getBBox().x + (hair.getBBox().width / 2);
+        pnt.y = hair.getBBox().y + (hair.getBBox().height / 1.2);
+        
+        headShrinkMatrix.scale(1, 1, pnt.x, pnt.y);
+        hair.animate({ transform: headShrinkMatrix}, 250);
     }
 }
