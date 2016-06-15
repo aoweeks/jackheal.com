@@ -190,7 +190,7 @@ newAnimation = "";
 
 
 var leftArm, leftLowerArm, leftHand, hair;
-var eyeCenterPoint;
+var eyeCenterPoint, eyeballs, eyeMask;
 
 
 var avatar = new Snap('.avatar-content');
@@ -214,6 +214,12 @@ Snap.load('img/jack.svg', function (response) {
    hair = response.select('#hair');
    
    eyeCenterPoint = response.select('#eye-center-point');
+   eyeMask = response.select('#eye-mask');
+   eyeballs = response.select('#eyeballs');
+   
+   eyeballs.attr({
+      mask: eyeMask 
+   });
    
    avatar.append(response);
    
