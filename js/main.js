@@ -255,8 +255,8 @@ function avatarMouseMove( ev, x, y){
     
     var localPnt = pnt.matrixTransform( avatar.paper.node.getScreenCTM().inverse() );
     c1.attr({ cx: localPnt.x , cy: localPnt.y });
-    if(c1.attr("cx") > 100){
-        console.log( c1.attr("cx") );
+    if( c1.attr("cx") > eyeCenterPoint.attr("cx") ){
+        console.log( eyeCenterPoint.attr("cx") );
     }
     
 }

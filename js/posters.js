@@ -143,7 +143,12 @@ function frankensteinsMonsterModeActivate(){
     $('#caricature-area').addClass('frankenstein');
     var headGrowMatrix = new Snap.Matrix();
     
-    headGrowMatrix.scale(1.02, 1.18);
+    
+    var pnt = avatar.paper.node.createSVGPoint();
+    pnt.x = hair.getBBox().x + (hair.getBBox().width / 2);
+    pnt.y = hair.getBBox().y + (hair.getBBox().height / 1.25);
+    
+    headGrowMatrix.scale(1.02, 1.18, pnt.x, pnt.y);
     hair.animate({ transform: headGrowMatrix}, 250);
 }
 
