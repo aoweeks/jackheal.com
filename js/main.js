@@ -191,6 +191,8 @@ newAnimation = "";
 
 var leftArm, leftLowerArm, leftHand, hair;
 var eyeCenterPoint, eyeballs, eyeMask;
+var eyeLeftPupilOriginX, eyeRightPupilOriginX;
+var eyeLeftPupilOriginY, eyeRightPupilOriginY;
 
 
 var avatar = new Snap('.avatar-content');
