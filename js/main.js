@@ -228,6 +228,13 @@ Snap.load('img/jack.svg', function (response) {
    everythingIsReady = true;
 });
 
+var avatarAreaLeft, avatarAreaTop, avatarAreaWidth, avatarAreaHeight;
+
+function updateAvatarAreaInfo(){
+    //avatarAreaLeft = ;
+}
+
+
 function bodyPartGenerator(response, bodyPart, rotationPart){
     var generatedPart = {
         element: response.select(bodyPart),
