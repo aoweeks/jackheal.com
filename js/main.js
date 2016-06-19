@@ -57,7 +57,7 @@ $(document).ready( function (event){
     setTimeout(function(){
         disableScrollAtStart = false;
         newAnimation = "waving";
-        updateAnimations();
+        updateAnimations(); 
     }, 300);
  
     setTimeout(blink, 900);
@@ -228,11 +228,7 @@ Snap.load('img/jack.svg', function (response) {
    everythingIsReady = true;
 });
 
-var avatarAreaLeft, avatarAreaTop, avatarAreaWidth, avatarAreaHeight;
-
-function updateAvatarAreaInfo(){
-    //avatarAreaLeft = ;
-}
+var avatarBBoxInfo;
 
 
 function bodyPartGenerator(response, bodyPart, rotationPart){
@@ -247,6 +243,8 @@ function bodyPartGenerator(response, bodyPart, rotationPart){
 
 function avatarMouseMove( ev, x, y){
     
+    console.log(x);
+    /*
     var pnt = avatar.paper.node.createSVGPoint();
     pnt.x = x;
     pnt.y = y;
@@ -268,7 +266,7 @@ function avatarMouseMove( ev, x, y){
     else{
         
         console.log("below");
-    }
+    }*/
     
 }
 
