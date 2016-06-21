@@ -243,8 +243,12 @@ function bodyPartGenerator(response, bodyPart, rotationPart){
 
 function avatarMouseMove( ev, x, y){
     
+    
+    var xWithinAvatarFrame = x - avatar.getBBox().x;
+    console.log(avatar.getBBox().x);
+    console.log(xWithinAvatarFrame);
     console.log(x);
-    /*
+    
     var pnt = avatar.paper.node.createSVGPoint();
     pnt.x = x;
     pnt.y = y;
@@ -257,7 +261,7 @@ function avatarMouseMove( ev, x, y){
     eyePnt.x = eyeCenterPoint.attr("cx");
     eyePnt.y = eyeCenterPoint.attr("cy");
     var localEyePnt = eyePnt.matrixTransform( avatar.paper.node.getScreenCTM().inverse() );
-    
+    /*
     console.log(localPnt.x);
     if( localPnt.x > (localEyePnt.x + 980.889) ){
         console.log( localEyePnt.x + 980.889 );
