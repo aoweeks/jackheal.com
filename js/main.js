@@ -197,6 +197,10 @@ var eyeLeftPupilOriginY, eyeRightPupilOriginY;
 
 var avatar = new Snap('.avatar-content');
 
+/*Load the cariacture of Jack which is on the right of screen via Snap.svg, and 
+assign handlers for events etc*/
+
+//This line is for development only
 var c1 = avatar.circle(0,0,3).attr({ fill: "red" });
 Snap.load('img/jack.svg', function (response) {
    
@@ -230,7 +234,8 @@ Snap.load('img/jack.svg', function (response) {
 
 var avatarBBoxInfo;
 
-
+/* This takes a body part that rotates, and the point about which it does rotate, and makes
+object with all this information in */
 function bodyPartGenerator(response, bodyPart, rotationPart){
     var generatedPart = {
         element: response.select(bodyPart),
@@ -241,6 +246,9 @@ function bodyPartGenerator(response, bodyPart, rotationPart){
     return generatedPart;
 }
 
+
+/* Anytime the mouse moves over the area with Jack's caricature in,
+this works out where the mouse is and makes Jack's eyes move accordingly*/
 function avatarMouseMove( ev, x, y){
     
     
@@ -274,6 +282,7 @@ function avatarMouseMove( ev, x, y){
     
 }
 
+/*When the mouse leaves the avatar area, the eyes reset to straight forward*/
 function avatarMouseLeave(){
     console.log("left");
 }
