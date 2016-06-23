@@ -104,6 +104,8 @@ function scrollToSection(target){
     }
 }
 
+/* Finds the top of each section and compiles an array of points to
+scroll to */
 function getSectionTops(){
     
     //Clear the array
@@ -120,7 +122,8 @@ function getSectionTops(){
     
 }
 
-
+/*If after scrolling the window has moved into a new section,  auto
+scroll to the top/bottom of that section */
 function checkIfMovedToNewSection(goingDown){
     
     var windowTop = $(document).scrollTop() + 99;
