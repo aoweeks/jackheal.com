@@ -267,11 +267,13 @@ function avatarMouseMove( ev, x, y){
     
     c1.attr({ cx: localPnt.x , cy: localPnt.y });
     
-    
-    var eyePnt = avatar.paper.node.createSVGPoint();
-    eyePnt.x = eyeCenterPoint.attr("cx");
-    eyePnt.y = eyeCenterPoint.attr("cy");
-    var localEyePnt = eyePnt.matrixTransform( avatar.paper.node.getScreenCTM().inverse() );
+    //Test Point
+    // var eyePnt = avatar.paper.node.createSVGPoint();
+    // eyePnt.x = eyeCenterPoint.attr("cx");
+    // eyePnt.y = eyeCenterPoint.attr("cy");
+    // var localEyePnt = eyePnt.matrixTransform( avatar.paper.node.getScreenCTM().inverse() );
+   
+   
     /*
     console.log(localPnt.x);
     if( localPnt.x > (localEyePnt.x + 980.889) ){
